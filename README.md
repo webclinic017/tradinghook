@@ -27,6 +27,7 @@ To make sure you have all the python modules installed.
 
 ```bash
 pip install -r requirements.txt
+```
 
 ## SIDEBAR: Notes for creating a service for Linux based distributions
 

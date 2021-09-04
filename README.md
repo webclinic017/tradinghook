@@ -1,5 +1,7 @@
 # INTRODUCTION
 
+TODAYS PURPOSE IS JUST TO PLACE THIS FILE TO ACT AS A PLACEHOLDER.
+
 "tradinghook" is a FLask based application that is designed to "catch" hooks and then place trades based on the alert.
 I am balancing what I have in GITHUB with what I have in production.  My Production version isn't perfect yet... in fact it is scary because I have used it to place trades.   
 

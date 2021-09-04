@@ -17,45 +17,16 @@ You can use it for
 - trading.
 - fun
 
-## COMPONENTS
+## INSTALLATION
 
-### Frontend
+```bash
+git clone https://github.com/tlh45342/tradinghook.git
+```
 
-- [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate)
-- [jQuery](http://jquery.com/)
-- [Twitter Bootstrap](https://github.com/twitter/bootstrap)
-- [Jinja2](http://jinja.pocoo.org/docs/dev/)
+To make sure you have all the python modules installed.
 
-### Flask Extensions
-
-- [SQLAlchemy](http://www.sqlalchemy.org) and [Flask-SQLAlchemy](http://flask-sqlalchemy.pocoo.org)
-- [WTForms](http://wtforms.readthedocs.io) and [Flask-WTF](https://flask-wtf.readthedocs.io).
-- [Flask-Login](https://flask-login.readthedocs.io)
-- [Flask-Testing](https://pythonhosted.org/Flask-Testing/)
-- [Flask-RESTful](http://flask-restful-cn.readthedocs.io/)
-
-### Others
-
-- Modular Applications with Blueprints.
-- Use [Sentry](https://getsentry.com) for real-time crash reporting.
-- Automated managament via [fabric](http://flask.pocoo.org/docs/patterns/fabric/)
-
-## USAGE
-
-Pre-required Setup:
-
-- MacOS/Ubuntu (should be fine in other linux distro)
-- git
-- Python / pip / Fabric
-- sqlite / MySQL
-- Apache + mod\_wsgi
-
-    git clone https://github.com/imwilsonxu/fbone.git fbone
-
-    fab setup_python_macos
-    fab bootstrap
-    fab test
-    fab debug
+```bash
+pip install -r requirements.txt
 
 ## STRUCTURE
 
@@ -72,14 +43,9 @@ Pre-required Setup:
        ├── config.py                Develop / Testing configs
        ├── constants.py             Constants
        
-## TODO
-
-- Upgrade to [Python3k](https://www.python.org/download/releases/3.0/).
-- User [Celery](http://celeryprojet.org), distributed task queue.
-
 ## LICENSE
 
-Apache
+tradinghook is licensed under the Apache License, Version 2.0. See LICENSE for the full license text.
 
 ## ACKNOWLEDGEMENTS
 

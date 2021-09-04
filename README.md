@@ -35,6 +35,7 @@ I am putting my notes here now - because I will use them.  Consider these random
 
 To create a service entry cd /etc/systemd/system
 Create a file that looks something like is found in the following block.
+I am naming mine: tradinghook
 As much as I hate assumptions - you will need to edit this to your tastes and for your environment.
 
 ```bash
@@ -53,9 +54,9 @@ The key commands for reference are:
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl start flask1.service
-sudo systemctl restart flask1.service
-sudo systemctl stop flask1.service
+sudo systemctl start tradinghook
+sudo systemctl restart tradinghook
+sudo systemctl stop tradinghook
 ```
 
 ## STRUCTURE

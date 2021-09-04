@@ -76,9 +76,6 @@ Pre-required Setup:
 
 - Upgrade to [Python3k](https://www.python.org/download/releases/3.0/).
 - User [Celery](http://celeryprojet.org), distributed task queue.
-- User [Elastic Search](https://github.com/elastic/elasticsearch), Open Source, Distributed, RESTful Search Engine.
-- Use [PostgreSQL](https://www.postgresql.org).
-- Use [GeeTest](http://www.geetest.com), a popular CAPTCHA service in China.
 
 ## LICENSE
 

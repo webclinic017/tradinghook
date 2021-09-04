@@ -39,10 +39,10 @@ As much as I hate assumptions - you will need to edit this to your tastes and fo
 
 ```bash
 [Unit]
-Description=flask-example1
+Description=Tradinghook
 
 [Service]
-WorkingDirectory=/mnt/python/flask-example1/
+WorkingDirectory=/mnt/python/tradinghook/
 ExecStart=/usr/local/bin/gunicorn -b 0.0.0.0:8080 -w 4 server:app
 
 [Install]
@@ -61,13 +61,9 @@ sudo systemctl stop flask1.service
 ## STRUCTURE
 
     ├── CHANGES                     Change logs
-    ├── README.markdown
-    ├── fabfile.py                  Fabric file to automated managament project
-    ├── fbone.conf                  Apache config
     ├── requirements.txt            3rd libraries
     ├── tests.py                    Unittests
     ├── wsgi.py                     Wsgi app
-    ├── fbone
        ├── __init__.py
        ├── app.py                   Main App
        ├── config.py                Develop / Testing configs

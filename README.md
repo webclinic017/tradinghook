@@ -44,7 +44,7 @@ Description=tradinghook.service
 
 [Service]
 WorkingDirectory=/mnt/python/tradinghook/
-ExecStart=/usr/local/bin/gunicorn --certfile=server.crt --keyfile=private.key -b 0.0.0.0:8080 -w 4 server:app
+ExecStart=/usr/local/bin/gunicorn --certfile=server.crt --keyfile=private.key -b 0.0.0.0:443 -w 4 server:app
 
 [Install]
 WantedBy=multi-user.target

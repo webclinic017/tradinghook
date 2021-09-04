@@ -1,0 +1,13 @@
+flask
+flask_login
+flask_sqlalchemy
+blueprint
+app
+webull
+colorama
+alpaca_trade_api
+termcolor
+configparser
+#json
+#sqlite
+#logging

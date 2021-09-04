@@ -35,12 +35,12 @@ I am putting my notes here now - because I will use them.  Consider these random
 
 To create a service entry cd /etc/systemd/system
 Create a file that looks something like is found in the following block.
-I am naming mine: tradinghook
+I am naming mine: tradinghook.service
 As much as I hate assumptions - you will need to edit this to your tastes and for your environment.
 
 ```bash
 [Unit]
-Description=Tradinghook
+Description=tradinghook.service
 
 [Service]
 WorkingDirectory=/mnt/python/tradinghook/
@@ -57,6 +57,7 @@ sudo systemctl daemon-reload
 sudo systemctl start tradinghook
 sudo systemctl restart tradinghook
 sudo systemctl stop tradinghook
+sudo systemctl status tradinghook
 ```
 
 ## STRUCTURE

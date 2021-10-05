@@ -1,0 +1,77 @@
+body{
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+    margin-left: 0px; 
+    margin-right: 0px;
+    padding: 0;
+    color: black; 
+    font-size: 10pt; 
+    font-family: "Trebuchet MS", sans-serif;
+    background-color: #E2E2E2;
+}
+
+.top {
+  background-color: #F2F6FA;
+  position:absolute;
+  left:0; right:0;
+  height: 32px  
+}
+
+.main {
+  position: absolute;
+  left:61px; top:32px; right:0; bottom:0;
+  background-color: #FFFFFF;
+}
+
+.nav {
+  position:absolute;
+  left:0; top:32px; bottom: 0;
+  width: 60px;
+  /* height: 100%; */
+  background: #292f4f;
+}
+
+.navbar-brand {
+    display: flex;
+    margin: auto;
+}
+
+.logo-image {
+    margin: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+	vertical-align: middle;
+	transform: translateY(50%);
+    text-align: center;
+}
+
+.content {
+    float: left;
+    padding: 15px;
+}
+
+.header-user-icon {
+	position: relative;
+    left:17px;
+	top:3px;
+	height: 32px;
+}
+
+.header-user-text {
+	position: fixed;
+    left:65px;
+	top:5px;
+	height: 32px;
+    color: black; 
+    font-size: 12pt; 
+    font-family: "Trebuchet MS", sans-serif;	
+}
+
+.header-logout-icon {
+	position: absolute
+    right: 100px;
+	top:3px;
+	height: 32px;
+}

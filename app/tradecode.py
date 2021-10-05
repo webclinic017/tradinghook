@@ -12,7 +12,7 @@ from webull import webull
 from webull import paper_webull
 import alpaca_trade_api as tradeapi
 from datetime import date
-from app import common_db
+from app import common_db, is_present
 
 # ------------------------------
 

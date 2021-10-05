@@ -1,3 +1,4 @@
+import config as CONFIG
 from flask import Flask
 from flask_login import LoginManager
 import os

@@ -7,6 +7,7 @@ import pandas
 import configparser
 from flask import Flask, request, render_template, redirect, url_for
 import logging
+import config as CONFIG
 from webull import webull
 from webull import paper_webull
 import alpaca_trade_api as tradeapi
@@ -44,8 +45,7 @@ def xstr(s):
 def query_transactions():
     today = date.today()
     d1 = str(today.strftime("%Y-%m-%d"))
-    database = r"tradinghook.db"
-    conn = create_connection(database)
+    conn = create_connection(CONFIG.DATABASE)
     #print(type(today))
     sqlite_statement = ("SELECT * FROM transactions WHERE orderplaced like \""+d1+"%\";")
     #print(sqlite_statement)
@@ -71,8 +71,7 @@ def query_transactions():
 # ------------------------------
 
 def query_accountbalance(fundid):
-    database = r"tradinghook.db"
-    conn = create_connection(database)
+    conn = create_connection(CONFIG.DATABASE)
     #print(fundid)
     #print(type(fundid))
     sqlite_statement = ("SELECT * FROM accountbalance WHERE fundid = \""+str(fundid)+"\";")
@@ -112,9 +111,8 @@ def create_connection(db_file):
 # -------------------------------------------------------------------
 
 def have_position(x):
-    database = r"tradinghook.db"
     rows = []
-    conn = create_connection(database)
+    conn = create_connection(CONFIG.DATABASE)
     if conn is not None:
         query = ("SELECT * FROM position WHERE ticker = '"+x+"';")                             
         cursor = conn.cursor()
@@ -133,9 +131,8 @@ def have_position(x):
 # -------------------------------------------------------------------
 
 def return_position(x):
-    database = r"tradinghook.db"
     rows = []
-    conn = create_connection(database)
+    conn = create_connection(CONFIG.DATABASE)
     if conn is not None:
         query = ("SELECT * FROM position WHERE 1=1;")                             
         cursor = conn.cursor()
@@ -158,7 +155,6 @@ def create_table(conn, create_table_sql):
 # ------------------------------------------------------------------- 
     
 def create_accountbalance():
-    database = r"tradinghook.db"
     sql_create_trades_table = """ CREATE TABLE IF NOT EXISTS accountbalance (
                                         userid text,
                                         fundid text,
@@ -167,7 +163,7 @@ def create_accountbalance():
                                         unsettled text
                                     ); """
     # create a database connection
-    conn = create_connection(database)
+    conn = create_connection(CONFIG.DATABASE)
     # create tables
     if conn is not None:
         # create projects table
@@ -178,7 +174,6 @@ def create_accountbalance():
 # ------------------------------
 
 def create_transactions_table():    
-    database = r"tradinghook.db"
     sql_create_transactions_table = """ CREATE TABLE IF NOT EXISTS transactions (
                                         userid text,
                                         symbol text,
@@ -190,7 +185,7 @@ def create_transactions_table():
                                         orderfilled text
                                     ); """
     # create a database connection
-    conn = create_connection(database)
+    conn = create_connection(CONFIG.DATABASE)
     # create tables
     if conn is not None:
         create_table(conn, sql_create_transactions_table)
@@ -200,8 +195,7 @@ def create_transactions_table():
 # ------------------------------
 
 def insert_into_accountbalance(account):
-    database = r"tradinghook.db"
-    conn = create_connection(database)
+    conn = create_connection(CONFIG.DATABASE)
     print(account)
     print(type(account))
     sqlite_statement = ("INSERT INTO accountbalance (userid,fundid,exchangeid,settled,unsettled)\n" +
@@ -260,8 +254,7 @@ def list_to_df(data):
 def add_position(trade):
     print("TRADINGHOOK.ADD_POSITION: [ENTER]")
     print(trade)
-    database = r"tradinghook.db"
-    conn = create_connection(database)
+    conn = create_connection(CONFIG.DATABASE)
     if conn is not None:
         sqlite_insert_query = ("INSERT INTO position (time,ticker,qty,price,amount)\n" +
                                "VALUES(\""+trade['time']+"\"," +
@@ -283,8 +276,7 @@ def add_position(trade):
 def record_transaction(transaction):
     print("TRADINGHOOK.RECORD_TRANSACTION: [ENTER]")
     print(trade)
-    database = r"tradinghook.db"
-    conn = create_connection(database)
+    conn = create_connection(CONFIG.DATABASE)
     if conn is not None:
         sqlite_insert_query = ("INSERT INTO transactions (userid,symbol,side,qty,price,orderplaced,orderfilled)\n" +
                                "VALUES(\""+transaction['userid']+"\"," +
@@ -308,9 +300,8 @@ def record_transaction(transaction):
 
 def delete_position(x):
     print("TRADERDB.DELETE_POSITION:")
-    database = r"tradinghook.db"
     rows = ""
-    conn = create_connection(database)
+    conn = create_connection(CONFIG.DATABASE)
     if conn is not None:
         query = ("DELETE FROM position WHERE ticker = '"+x+"';")                             
         cursor = conn.cursor()
@@ -324,9 +315,8 @@ def delete_position(x):
 # -------------------------------
 
 def return_transactions():
-    database = r"tradinghook.db"
     rows = []
-    conn = create_connection(database)
+    conn = create_connection(CONFIG.DATABASE)
     if conn is not None:
         query = ("SELECT * FROM transactions WHERE 1=1;")                             
         cursor = conn.cursor()

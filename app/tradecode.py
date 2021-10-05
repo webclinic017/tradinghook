@@ -586,7 +586,7 @@ def parse(x):
   
 def init_tradecode():
     logging.info("tradecode_init()")
-    if !(is_present("transactions"):
+    if !is_present("transactions"):
         logging.info("creating transactions table.")
         create_transactions_table() 
     

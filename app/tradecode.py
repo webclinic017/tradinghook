@@ -560,3 +560,8 @@ def parse(x):
       print("attempted to Sell something we do not have a positon on and we DO NOT have MARGINS enabled")
   #
   print("ENDPARSE:")  
+  
+# -------------------------------
+  
+def tradecode_init():
+     logging.info("Logging on:")

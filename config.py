@@ -1,0 +1,1 @@
+DATABASE = r"tradinghook.db"

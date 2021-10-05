@@ -12,6 +12,7 @@ from webull import webull
 from webull import paper_webull
 import alpaca_trade_api as tradeapi
 from datetime import date
+from app import common_db
 
 # ------------------------------
 
@@ -191,7 +192,27 @@ def create_transactions_table():
         create_table(conn, sql_create_transactions_table)
     else:
         print("Error! cannot create the database connection.")
+ 
+# ------------------------------
+
+def create_position_table():    
+    sql_create_table = """ CREATE TABLE IF NOT EXISTS position (
+                           time text,
+                           symbol text,
+                           side  text,   
+                           qty text,
+                           price  text,
+                           amount text
+                        ); """
+    # create a database connection
+    conn = create_connection(CONFIG.DATABASE)
+    # create tables
+    if conn is not None:
+        create_table(conn, sql_create_transactions_table)
+    else: 
+        print("Error! cannot create the database connection.")
         
+ 
 # ------------------------------
 
 def insert_into_accountbalance(account):
@@ -563,5 +584,13 @@ def parse(x):
   
 # -------------------------------
   
-def tradecode_init():
-     logging.info("tradecode_init()")
+def init_tradecode():
+    logging.info("tradecode_init()")
+    if !(is_present("transactions"):
+        logging.info("creating transactions table.")
+        create_transactions_table() 
+    
+    create_position_table()
+    create_transactions_table() 
+    create_accountbalance()
+    create_transactions_table()    

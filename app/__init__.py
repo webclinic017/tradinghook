@@ -26,3 +26,6 @@ from app import auth
 #init and create database if necessary
 from app import user_db
 user_db.init_db()
+
+from app import tradecode
+tradecode.init_tradecode()

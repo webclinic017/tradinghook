@@ -2,18 +2,9 @@ import sqlite3
 import os.path
 import config as CONFIG
 import logging
+from app import common_db
 
-
-def is_present():
-    conn = sqlite3.connect(CONFIG.DATABASE)
-    c = conn.cursor()
-    c.execute(''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='users' ''')
-    if c.fetchone()[0]==1 :   
-       found = True
-    else: 
-        found = False  
-    return (found)
-
+# ------------------------------
 
 def init_db():
     logging.info("init_db()")
@@ -23,11 +14,12 @@ def init_db():
         logging.info("inserting initial user.")
         insert_user(1, "admin", "p@$$w0rd")
     else:            
-        if is_present() == False:
+        if is_present('users') == False:
             logging.info("creating users table.")
             create_users_table()
             logging.info("inserting initial user.")
             insert_user(1, "admin", "p@$$w0rd")
+
 
 def create_connection(db_file):
     conn = None

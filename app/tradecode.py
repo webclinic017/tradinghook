@@ -564,4 +564,4 @@ def parse(x):
 # -------------------------------
   
 def tradecode_init():
-     logging.info("Logging on:")
+     logging.info("tradecode_init()")

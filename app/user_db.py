@@ -1,6 +1,7 @@
 import sqlite3
 import os.path
 import config as CONFIG
+import logging
 
 
 def is_present():
@@ -15,13 +16,17 @@ def is_present():
 
 
 def init_db():
-    print("hi*")
-    if (os.path.isfile(CONFIG.DATABASE) != True): 
+    logging.info("init_db()")
+    if (os.path.isfile(CONFIG.DATABASE) != True):
+        logging.info("creating users table.")
         create_users_table()
+        logging.info("inserting initial user.")
         insert_user(1, "admin", "p@$$w0rd")
     else:            
         if is_present() == False:
+            logging.info("creating users table.")
             create_users_table()
+            logging.info("inserting initial user.")
             insert_user(1, "admin", "p@$$w0rd")
 
 def create_connection(db_file):

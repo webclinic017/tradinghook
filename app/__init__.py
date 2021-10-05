@@ -1,12 +1,13 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+import os
 
 #create app
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'secret-key-goes-here'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+# prepare secret key
+SECRET_KEY = os.urandom(32)
+app.config['SECRET_KEY'] = SECRET_KEY
 
 from app import routes
 
@@ -20,3 +21,7 @@ login_manager.login_view = 'login'
 
 from app import user
 from app import auth
+
+#init and create database if necessary
+from app import user_db
+user_db.init_db()

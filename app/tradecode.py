@@ -12,7 +12,7 @@ from webull import webull
 from webull import paper_webull
 import alpaca_trade_api as tradeapi
 from datetime import date
-from app import common_db, is_present
+from app.common_db import is_present 
 
 # ------------------------------
 
@@ -208,7 +208,7 @@ def create_position_table():
     conn = create_connection(CONFIG.DATABASE)
     # create tables
     if conn is not None:
-        create_table(conn, sql_create_transactions_table)
+        create_table(conn, sql_create_table)
     else: 
         print("Error! cannot create the database connection.")
         

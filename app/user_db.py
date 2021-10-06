@@ -2,7 +2,7 @@ import sqlite3
 import os.path
 import config as CONFIG
 import logging
-from app import common_db
+from app.common_db import is_present
 
 # ------------------------------
 

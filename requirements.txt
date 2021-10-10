@@ -7,3 +7,4 @@ colorama
 alpaca_trade_api
 termcolor
 configparser
+guinicorn

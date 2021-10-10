@@ -1,6 +1,6 @@
 # INTRODUCTION
 
-"tradinghook" is a FLask based application that is designed to "catch" hooks and then place trades based on the alert.
+"tradinghook" is a Flask based application that is designed to "catch" hooks and then place trades based on the alert.
 I am balancing what I have in GITHUB with what I have in production.  My Production version isn't perfect yet... in fact it is scary because I have used it to place trades.   
 
 It is designed to be able to place trade on Webull.  Both paper and live.  It is in the process of being setup to trade with Alpaca as well as TD Ameritrade.

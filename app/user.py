@@ -4,6 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from app import app, login_manager
 import sqlite3
+import logging
 import config as CONFIG
 
 class User(UserMixin):

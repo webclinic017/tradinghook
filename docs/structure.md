@@ -1,21 +1,26 @@
 # INTRODUCTION
 
-"tradinghook" is a Flask based application that is designed to "catch" hooks and then place trades based on the alert. I am balancing what I have in GITHUB with what I have in production. My Production version isn't perfect yet... in fact it is scary because I have used it to place trades.
+This document will serve to replace my scraps of paper where I have outlined data types/schema.
 
-placed to already be out of the action and would otherwise just sit. 2) Sync accounts to verify settled and unsettled acounts as well as ingest changes caused by dividends.
+## Structures
 
-## Docs
+```bash
+0 Webull Paper
+1 Webull Live
+2 TDAmeritrade Paper
+3 TD Ameritrade Live
+4 Alpaca Paper
+5 Alpaca Live
+```
 
-Please read the "theory-of-operation.rst" file. Or at least this is what I am posting at the moment. This will be more of a introduction of how this can be used.
-
-## INSTALLATION
-
-`bash git clone https://github.com/tlh45342/tradinghook.git `
+```bash
+Condition
+  UserID
+  Symbol
+  Passphrase
+  FundID
+  Tradetype
+  condition
+```
 
 ## Initial Doc
-
-Perform Initial setup. Login in. Change your password Enter Exchange information Enter Conditions
-
-"Webhooks" use the conditions to determine which exchange accounts to place trades on and under.
-
-`bash testing `

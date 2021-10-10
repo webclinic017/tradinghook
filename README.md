@@ -10,6 +10,10 @@ The strategies being designed might be to MAX out everything.  Or - by design - 
 
 In the process I will incorporate a number of features.  1) Monitor reality and make sure a "sell" transaction is acted on.  It is possible in a fast moving enviornment for a trade being placed to already be out of the action and would otherwise just sit.  2) Sync accounts to verify settled and unsettled acounts as well as ingest changes caused by dividends.
 
+## Docs
+
+Please read the "theory-of-operation.rst" file.  Or at least this is what I am posting at the moment.  This will be more of a introduction of how this can be used.
+
 ## INSTALLATION
 
 ```bash
@@ -55,18 +59,21 @@ sudo systemctl status tradinghook
 
 ## STRUCTURE
 
-    ├── CHANGES                     Change logs
-    ├── requirements.txt            3rd libraries
-    ├── config.py                   global inheritance of application values
-    ├── server.py                   Server code
+    ├── CHANGES                         Change logs
+    ├── requirements.txt                3rd libraries
+    ├── config.py                       global inheritance of application values
+    ├── server.py                       Server code
     └── app
+       ├── static
+       |   ├── tboery-of-operation.rst  Theory behind the intended use
+       |   └── structures.rst           structures - reference      
        ├── static
        ├── templates
        ├── __init__.py
-       ├── routes.py                basic route statements
-       ├── tradecode.py             routines for trading and management
-       ├── user_db.py               User DB management
-       └── common_db.py             Commond db routines
+       ├── routes.py                    basic route statements
+       ├── tradecode.py                 routines for trading and management
+       ├── user_db.py                   User DB management
+       └── common_db.py                 Commond db routines
        
 ## LICENSE
 

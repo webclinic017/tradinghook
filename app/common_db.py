@@ -7,7 +7,6 @@ def is_present(table):
     c = conn.cursor()
     try:
         query = '''SELECT count(name) FROM sqlite_master WHERE type='table' AND name='{}';'''.format(table)
-        print(query)
         c.execute(query)
         if c.fetchone()[0]==1 :   
             found = True

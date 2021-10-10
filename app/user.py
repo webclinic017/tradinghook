@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from app import app, login_manager
 import sqlite3
-
+import config as CONFIG
 
 class User(UserMixin):
     def __init__(self, id, email, password):
@@ -39,7 +39,7 @@ class LoginForm(FlaskForm):
 @login_manager.user_loader
 def load_user(userid):
     #print("load_user:")
-    conn = sqlite3.connect('login.db')
+    conn = sqlite3.connect(CONFIG.DATABASE)
     curs = conn.cursor()
     query = """SELECT * from "users" where "id" = "{0}";""".format(userid)
     #print("query:", query)
@@ -63,7 +63,9 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('protected')) 
     else:
-        if request.method == "GET":   
+        if request.method == "GET"
+           return render_template('login.html',title='Login', form=form) 
+        elif request.method == "POST":   
             username = request.args.get('username')
             password = request.args.get('password')
             if username != None:
@@ -72,7 +74,7 @@ def login():
                   #print("username:", username)
                   if next == None:
                       #print("inside:")
-                      conn = sqlite3.connect('login.db')
+                      conn = sqlite3.connect(CONFIG.DATABASE)
                       cursor = conn.cursor()
                       select = cursor.execute("""SELECT * FROM "users" where "username" = "{0}";""".format(username))
                       print("select:", select.rowcount)
@@ -93,11 +95,6 @@ def login():
                           cursor.close()
                           conn.close() 
                           return redirect(url_for('index')) 
-            else:
-                return render_template('login.html',title='Login', form=form) 
-        else:
-           return render_template('login.html',title='Login', form=form) 
-    return render_template('login.html',title='Login', form=form)
  
 
 @app.route('/logout', methods=['GET','POST'])

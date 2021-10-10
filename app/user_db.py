@@ -8,7 +8,6 @@ from app.common_db import is_present
 
 def init_db():
     logging.info("init_db()")
-    logging.info(CONFIG.DATABASE)
     if (os.path.isfile(CONFIG.DATABASE) != True):
         logging.info("creating users table.")
         create_users_table()

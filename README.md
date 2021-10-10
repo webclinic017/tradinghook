@@ -62,7 +62,8 @@ sudo systemctl status tradinghook
 
     ├── CHANGES                     Change logs
     ├── requirements.txt            3rd libraries
-    ├── config.py                   Develop / Testing configs
+    ├── config.py                   global inheritance of application values
+    ├── server.py                   Server code
     └── app
        ├── static
        ├── templates

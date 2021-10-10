@@ -62,12 +62,15 @@ sudo systemctl status tradinghook
 
     ├── CHANGES                     Change logs
     ├── requirements.txt            3rd libraries
-    ├── tests.py                    Unittests
-    ├── wsgi.py                     Wsgi app
+    ├── config.py                   Develop / Testing configs
+    ├── APP                         APP directory
+       ├── static
+       ├── templates
        ├── __init__.py
-       ├── app.py                   Main App
-       ├── config.py                Develop / Testing configs
-       ├── constants.py             Constants
+       ├── routes.py                basic route statements
+       ├── tradecode.py             routines for trading and management
+       ├── user_db.py               User DB management
+       ├── common_db.py             Commond db routines
        
 ## LICENSE
 

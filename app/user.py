@@ -62,8 +62,6 @@ def login():
     logging.info("login()")
     form = LoginForm()
     if request.method == "GET":
-       return render_template('login.html',title='Login', form=form) 
-    elif request.method == "POST":   
         logging.info("post")
         username = request.args.get('username')
         password = request.args.get('password')

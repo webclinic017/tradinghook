@@ -62,11 +62,14 @@ def login():
     logging.info("login()")
     form = LoginForm()
     if request.method == "GET":
-        logging.info("post")
+        logging.info("GET")
+        query_string = request.query_string
         username = request.args.get('username')
-        password = request.args.get('password')
-        logging.info("deats:")
+        logging.info("username:")      
         logging.info(username)
+        password = request.args.get('password')
+        logging.info("querystring:")
+        logging.info(query_string)
         if username != None:
             if (len(username) != 0) and (len(password) != 0):
                 #print("username:", username)

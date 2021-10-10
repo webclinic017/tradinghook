@@ -59,7 +59,7 @@ sudo systemctl status tradinghook
 
 ## STRUCTURE
 
-    ├── CHANGES                         Change logs
+    ├── CHANGES.rst                     Change logs
     ├── requirements.txt                3rd libraries
     ├── config.py                       global inheritance of application values
     ├── server.py                       Server code

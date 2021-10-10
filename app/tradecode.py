@@ -156,7 +156,7 @@ def create_table(conn, create_table_sql):
 # ------------------------------------------------------------------- 
     
 def create_accountbalance():
-    sql_create_trades_table = """ CREATE TABLE IF NOT EXISTS accountbalance (
+    sql_create_table = """ CREATE TABLE IF NOT EXISTS accountbalance (
                                         userid text,
                                         fundid text,
                                         exchangeid text,
@@ -168,7 +168,7 @@ def create_accountbalance():
     # create tables
     if conn is not None:
         # create projects table
-        create_table(conn, sql_create_trades_table)
+        create_table(conn, sql_create_table)
     else:
         print("Error! cannot create the database connection.")
 
@@ -212,8 +212,27 @@ def create_position_table():
     else: 
         print("Error! cannot create the database connection.")
         
- 
 # ------------------------------
+
+def create_trades_table():    
+    sql_create_table = """ CREATE TABLE IF NOT EXISTS trades (
+                           date text,
+                           ticker text,
+                           qty  text,   
+                           side text,
+                           lim text,
+                           price  text,
+                           amount text
+                        ); """
+    # create a database connection
+    conn = create_connection(CONFIG.DATABASE)
+    # create tables
+    if conn is not None:
+        create_table(conn, sql_create_table)
+    else: 
+        print("Error! cannot create the database connection.")
+        
+ # ------------------------------
 
 def insert_into_accountbalance(account):
     conn = create_connection(CONFIG.DATABASE)
@@ -590,7 +609,14 @@ def init_tradecode():
         logging.info("creating transactions table.")
         create_transactions_table() 
     
-    create_position_table()
-    create_transactions_table() 
-    create_accountbalance()
-    create_transactions_table()    
+    if not is_present("position"):  
+        logging.info("creating position table.")
+        create_position_table()
+      
+    if not is_present("accountbalance"):
+        logging.info("creating accountbalance table.")
+        create_accountbalance()
+
+    if not is_present("trades"):
+        logging.info("creating trades table.")
+        create_trades_table()    

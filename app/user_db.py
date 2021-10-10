@@ -10,7 +10,7 @@ def init_db():
     logging.info("init_db()")
     logging.info(CONFIG.DATABASE)
     if (os.path.isfile(CONFIG.DATABASE) != True):
-        logging.info("creating users table. XXX")
+        logging.info("creating users table.")
         create_users_table()
         logging.info("inserting initial user.")
         insert_user(1, "admin", "p@$$w0rd")

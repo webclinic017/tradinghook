@@ -5,6 +5,22 @@ This document will serve to replace my scraps of paper where I have outlined dat
 ## Structures
 
 ```bash
+User
+  UserID
+  Username
+  Password
+  Fullname
+```
+Account:
+```bash
+  UserID:
+  ExchangeID:
+  exchangeusername
+  Exchangepassword
+  exchangetoken
+```
+
+```bash
 0 Webull Paper
 1 Webull Live
 2 TD Ameritrade Paper

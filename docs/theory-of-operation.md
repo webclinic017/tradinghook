@@ -6,7 +6,7 @@
 
 ## Docs
 
-Please read the "theory-of-operation.rst" file. Or at least this is what I am posting at the moment. This will be more of a introduction of how this can be used.
+Please read the "theory-of-operation.md" file. Or at least this is what I am posting at the moment. This will be more of a introduction of how this can be used.
 
 ## INSTALLATION
 

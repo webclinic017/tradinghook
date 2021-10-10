@@ -27,7 +27,7 @@ def create_connection(db_file):
         conn = sqlite3.connect(db_file)
         return conn
     except Error as e:
-        print(e)
+        logging.info(e)
     return conn
 
 
@@ -36,7 +36,7 @@ def create_table(conn, create_table_sql):
         c = conn.cursor()
         c.execute(create_table_sql)
     except Error as e:
-        print(e)
+        logging.info(e)
 
 
 def create_users_table():    
@@ -52,7 +52,7 @@ def create_users_table():
         create_table(conn, sql_create_table)
         conn.commit()
     else:
-        print("Error! cannot create the database connection.")
+        logging.info("Error! cannot create the database connection.")
 
 
 def insert_user(id, username, password):
@@ -62,11 +62,7 @@ def insert_user(id, username, password):
                                "VALUES(\""+str(id)+"\"," +
                                "\""+username+"\"," +
                                "\""+password+"\");")
-        print(sqlite_insert_query)
         cursor = conn.cursor()
         count = cursor.execute(sqlite_insert_query)
         conn.commit()
-        #print("Record inserted successfully into table POSITION:", cursor.rowcount)
         cursor.close()
-    else:
-        print("oops.")

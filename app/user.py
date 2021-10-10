@@ -67,10 +67,11 @@ def login():
         logging.info("post")
         username = request.args.get('username')
         password = request.args.get('password')
+        logging.info("deats:",username, password)
         if username != None:
             if (len(username) != 0) and (len(password) != 0):
                 #print("username:", username)
-                #print("inside:")
+                logging.info("login()[inside]")
                 conn = sqlite3.connect(CONFIG.DATABASE)
                 cursor = conn.cursor()
                 select = cursor.execute("""SELECT * FROM "users" where "username" = "{0}";""".format(username))

@@ -81,7 +81,7 @@ def login():
                 #print("select:", select.rowcount)
                 try:
                     row = list(cursor.fetchone())
-                    print("row:", row)
+                    logging.info(row)
                     if (username == row[1]) and (password == row[2]):
                         id = row[0]
                         user = User(id,username,password)
@@ -92,7 +92,7 @@ def login():
                         conn.close() 
                         return redirect('/')                        
                 except Exception as e:
-                    #print("ex:",e)
+                    logging.info("exception at login (ERR:1234):")
                     cursor.close()
                     conn.close() 
                     return redirect('/')

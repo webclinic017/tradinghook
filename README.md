@@ -41,7 +41,7 @@ As much as I hate assumptions - you will need to edit this to your tastes and fo
 Description=tradinghook.service
 
 [Service]
-WorkingDirectory=/mnt/python/tradinghook/
+WorkingDirectory=/opt/tradinghook/
 ExecStart=/usr/local/bin/gunicorn --certfile=server.crt --keyfile=private.key -b 0.0.0.0:443 -w 4 server:app
 
 [Install]

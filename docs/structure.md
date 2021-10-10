@@ -7,7 +7,7 @@ This document will serve to replace my scraps of paper where I have outlined dat
 ```bash
 0 Webull Paper
 1 Webull Live
-2 TDAmeritrade Paper
+2 TD Ameritrade Paper
 3 TD Ameritrade Live
 4 Alpaca Paper
 5 Alpaca Live

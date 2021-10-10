@@ -90,7 +90,9 @@ def login():
                         login_user(user)
                         cursor.close()
                         conn.close() 
-                        return redirect('/')                        
+                        return redirect('/')
+                    else: 
+                        return redirect('/')                    
                 except Exception as e:
                     logging.info("exception at login (ERR:1234):")
                     cursor.close()

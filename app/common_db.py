@@ -6,7 +6,7 @@ def is_present(table):
     conn = sqlite3.connect(CONFIG.DATABASE)
     c = conn.cursor()
     try:
-        c.execute(''' SELECT count(name) FROM sqlite_master WHERE type='''+table+''' AND name='users' ''')
+        c.execute(''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='''+table+''';''')
         if c.fetchone()[0]==1 :   
             found = True
             logging.info("x1")

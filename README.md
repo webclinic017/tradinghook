@@ -64,7 +64,6 @@ sudo systemctl status tradinghook
     ├── requirements.txt            3rd libraries
     ├── config.py                   Develop / Testing configs
     └── app
-       ├── __init__.py
        ├── static
        ├── templates
        ├── __init__.py

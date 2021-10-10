@@ -11,7 +11,7 @@ from app.tradecode import *
 def root():
   if current_user.is_authenticated:
      return render_template("home.html")
-  return render_template("login.html")
+  return redirect("/login")
 
 
 @app.route("/webhook", methods=['GET','POST'])

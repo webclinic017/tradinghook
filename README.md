@@ -59,14 +59,14 @@ sudo systemctl status tradinghook
 
 ## STRUCTURE
 
-    ├── CHANGES.rst                     Change logs
+    ├── CHANGES.md                      Change logs
     ├── requirements.txt                3rd libraries
     ├── config.py                       global inheritance of application values
     ├── server.py                       Server code
     └── app
        ├── static
-       |   ├── tboery-of-operation.rst  Theory behind the intended use
-       |   └── structures.rst           structures - reference      
+       |   ├── tboery-of-operation.md   Theory behind the intended use
+       |   └── structures.md            structures - reference      
        ├── static
        ├── templates
        ├── __init__.py

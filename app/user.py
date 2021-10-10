@@ -58,11 +58,12 @@ def load_user(userid):
 
 @app.route("/login", methods=['GET','POST'])
 def login():
-    #print("user:",current_user)
+    logging.info("login()")
     form = LoginForm()
     if request.method == "GET":
        return render_template('login.html',title='Login', form=form) 
     elif request.method == "POST":   
+        logging.info("post")
         username = request.args.get('username')
         password = request.args.get('password')
         if username != None:

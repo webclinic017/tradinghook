@@ -10,11 +10,6 @@ The strategies being designed might be to MAX out everything.  Or - by design - 
 
 In the process I will incorporate a number of features.  1) Monitor reality and make sure a "sell" transaction is acted on.  It is possible in a fast moving enviornment for a trade being placed to already be out of the action and would otherwise just sit.  2) Sync accounts to verify settled and unsettled acounts as well as ingest changes caused by dividends.
 
-You can use it for
-
-- trading.
-- fun
-
 ## INSTALLATION
 
 ```bash

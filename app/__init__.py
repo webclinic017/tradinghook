@@ -21,7 +21,6 @@ login_manager.login_view = 'login'
 logging.basicConfig(filename=CONFIG.LOGFILE, level=logging.INFO)
 
 from app import user
-from app import auth
 
 #init and create database if necessary
 from app import user_db

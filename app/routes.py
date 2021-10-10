@@ -14,17 +14,6 @@ def root():
   return render_template("login.html")
 
 
-@app.route('/logout')
-@login_required
-def route_logout():
-    logout_user()
-    if session.get('was_once_logged_in'):
-        # prevent flashing automatically logged out message
-        del session['was_once_logged_in']
-    flash('You have successfully logged yourself out.')
-    return redirect('/')
-
-
 @app.route("/webhook", methods=['GET','POST'])
 def webhook():
   data = request.data
@@ -60,11 +49,6 @@ def captial():
 @app.route('/settings', methods=['GET'])
 def general():
   return render_template("settings.html")
-
-
-@app.route('/home', methods=['GET'])
-def home():
-  return render_template("home.html")
 
 
 @app.route('/utility', methods=['GET','POST'])

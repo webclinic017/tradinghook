@@ -63,21 +63,23 @@ def login():
     form = LoginForm()
     if request.method == "GET":
         logging.info("GET")
-        query_string = request.query_string
+        #query_string = request.query_string
         username = request.args.get('username')
         logging.info("username:")      
         logging.info(username)
         password = request.args.get('password')
-        logging.info("querystring:")
-        logging.info(query_string)
+        logging.info("password:")      
+        logging.info(password)
+        #logging.info("querystring:")
+        #logging.info(query_string)
         if username != None:
             if (len(username) != 0) and (len(password) != 0):
                 #print("username:", username)
-                logging.info("login()[inside]")
+                logging.info(logging.info("login()[inside]")
                 conn = sqlite3.connect(CONFIG.DATABASE)
                 cursor = conn.cursor()
                 select = cursor.execute("""SELECT * FROM "users" where "username" = "{0}";""".format(username))
-                print("select:", select.rowcount)
+                #print("select:", select.rowcount)
                 try:
                     row = list(cursor.fetchone())
                     print("row:", row)
@@ -89,12 +91,12 @@ def login():
                         login_user(user)
                         cursor.close()
                         conn.close() 
-                        return redirect(url_for('index'))                        
+                        return redirect('/')                        
                 except Exception as e:
                     #print("ex:",e)
                     cursor.close()
                     conn.close() 
-                    return redirect(url_for('index'))
+                    return redirect('/')
         else:
              return render_template('login.html',title='Login', form=form) 
  

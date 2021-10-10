@@ -63,14 +63,15 @@ sudo systemctl status tradinghook
     ├── CHANGES                     Change logs
     ├── requirements.txt            3rd libraries
     ├── config.py                   Develop / Testing configs
-    ├── APP                         APP directory
+    └── app
+       ├── __init__.py
        ├── static
        ├── templates
        ├── __init__.py
        ├── routes.py                basic route statements
        ├── tradecode.py             routines for trading and management
        ├── user_db.py               User DB management
-       ├── common_db.py             Commond db routines
+       └── common_db.py             Commond db routines
        
 ## LICENSE
 

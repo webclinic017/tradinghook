@@ -1,6 +1,7 @@
 flask
 flask_login
 flask_wtf
+wtforms
 blueprint
 app
 webull

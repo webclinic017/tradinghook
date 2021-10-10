@@ -67,7 +67,8 @@ def login():
         logging.info("post")
         username = request.args.get('username')
         password = request.args.get('password')
-        logging.info("deats:",username, password)
+        logging.info("deats:")
+        logging.info(username)
         if username != None:
             if (len(username) != 0) and (len(password) != 0):
                 #print("username:", username)

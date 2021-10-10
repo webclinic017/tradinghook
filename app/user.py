@@ -63,38 +63,36 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('protected')) 
     else:
-        if request.method == "GET"
+        if request.method == "GET":
            return render_template('login.html',title='Login', form=form) 
         elif request.method == "POST":   
             username = request.args.get('username')
             password = request.args.get('password')
             if username != None:
                 if (len(username) != 0) and (len(password) != 0):
-                  #print("next:", next)
-                  #print("username:", username)
-                  if next == None:
-                      #print("inside:")
-                      conn = sqlite3.connect(CONFIG.DATABASE)
-                      cursor = conn.cursor()
-                      select = cursor.execute("""SELECT * FROM "users" where "username" = "{0}";""".format(username))
-                      print("select:", select.rowcount)
-                      try:
-                          row = list(cursor.fetchone())
-                          print("row:", row)
-                          if (username == row[1]) and (password == row[2]):
-                              id = row[0]
-                              user = User(id,username,password)
-                              current_user.authenticated = True
-                              # print("x:", current_user.authenticated)
-                              login_user(user)
-                              cursor.close()
-                              conn.close() 
-                              return redirect(url_for('index'))                        
-                      except Exception as e:
-                          #print("ex:",e)
-                          cursor.close()
-                          conn.close() 
-                          return redirect(url_for('index')) 
+                    #print("username:", username)
+                    #print("inside:")
+                    conn = sqlite3.connect(CONFIG.DATABASE)
+                    cursor = conn.cursor()
+                    select = cursor.execute("""SELECT * FROM "users" where "username" = "{0}";""".format(username))
+                    print("select:", select.rowcount)
+                    try:
+                        row = list(cursor.fetchone())
+                        print("row:", row)
+                        if (username == row[1]) and (password == row[2]):
+                            id = row[0]
+                            user = User(id,username,password)
+                            current_user.authenticated = True
+                            # print("x:", current_user.authenticated)
+                            login_user(user)
+                            cursor.close()
+                            conn.close() 
+                            return redirect(url_for('index'))                        
+                    except Exception as e:
+                        #print("ex:",e)
+                        cursor.close()
+                        conn.close() 
+                        return redirect(url_for('index')) 
  
 
 @app.route('/logout', methods=['GET','POST'])

@@ -58,7 +58,7 @@ def load_user(userid):
 
 @app.route("/login", methods=['GET','POST'])
 def login():
-    #print(current_user)
+    print(current_user)
     form = LoginForm()
     if current_user.is_authenticated:
         return redirect(url_for('protected')) 

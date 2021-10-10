@@ -93,7 +93,9 @@ def login():
                     #print("ex:",e)
                     cursor.close()
                     conn.close() 
-                    return redirect(url_for('index')) 
+                    return redirect(url_for('index'))
+        else:
+             return render_template('login.html',title='Login', form=form) 
  
 
 @app.route('/logout', methods=['GET','POST'])

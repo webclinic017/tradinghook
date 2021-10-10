@@ -8,14 +8,15 @@ from app.common_db import is_present
 
 def init_db():
     logging.info("init_db()")
+    logging.info(CONFIG.DATABASE)
     if (os.path.isfile(CONFIG.DATABASE) != True):
-        logging.info("creating users table.")
+        logging.info("creating users table. XXX")
         create_users_table()
         logging.info("inserting initial user.")
         insert_user(1, "admin", "p@$$w0rd")
     else:            
         if is_present('users') == False:
-            logging.info("creating users table.")
+            logging.info("creating users table. YYY")
             create_users_table()
             logging.info("inserting initial user.")
             insert_user(1, "admin", "p@$$w0rd")

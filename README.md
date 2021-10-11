@@ -36,6 +36,7 @@ I am naming mine: tradinghook.service
 As much as I hate assumptions - you will need to edit this to your tastes and for your environment.
 
 ```bash
+cat <<EOF | sudo tee /etc/systemd/system/tradinghook.service
 [Unit]
 Description=tradinghook.service
 
@@ -45,6 +46,7 @@ ExecStart=/usr/local/bin/gunicorn --certfile=server.crt --keyfile=private.key -b
 
 [Install]
 WantedBy=multi-user.target
+EOF
 ```
 
 The key commands for reference are: 

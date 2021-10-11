@@ -66,7 +66,7 @@ sudo systemctl status tradinghook
     ├── config.py                       global inheritance of application values
     ├── server.py                       Server code
     └── app
-       ├── static
+       ├── doc
        |   ├── tboery-of-operation.md   Theory behind the intended use
        |   └── structures.md            structures - reference      
        ├── static

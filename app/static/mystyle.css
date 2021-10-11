@@ -71,7 +71,7 @@ body{
 
 .header-logout-icon {
 	position: absolute
-    right: 100px;
+    right: -100px;
 	top:3px;
 	height: 32px;
 }

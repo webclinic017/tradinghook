@@ -31,3 +31,15 @@ body{
     background-color: #E2E2E2;
     overflow: hidden; /* Hide scrollbars */
 }
+
+.header-user-icon { position: relative; left:17px; top:3px; height: 32px; }
+
+.header-user-text {
+	position: fixed;
+    left:65px;
+	top:5px;
+	height: 32px;
+    color: black; 
+    font-size: 12pt; 
+    font-family: "Trebuchet MS", sans-serif;	
+}

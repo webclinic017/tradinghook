@@ -1,3 +1,39 @@
+.container {
+  display: grid;
+  grid-template-columns: 0.3fr 2.4fr 0.3fr;
+  grid-template-rows: 0.3fr 0.3fr 2.4fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "header header header"
+    "navbar subbar subbar"
+    "navbar content content"
+    ". . .";
+}
+
+.header { grid-area: header; background-color: #9fada3; position:absolute; left:0; right:0; height:32px; }
+
+.header-text { position: fixed; left:65px; top:5px; height:32px; color:black; font-size:12pt; font-family: "Trebuchet MS", sans-serif; }
+
+.navbar { grid-area: navbar; background: #e3e0cc; position:absolute; width: 60px; left:0; top:32px; bottom:0; }
+
+.navbar-flex { display: flex; margin: auto; }
+
+.navbar-image {
+    margin: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+	vertical-align: middle;
+	transform: translateY(50%);
+    text-align: center;
+}
+
+.subbar { grid-area: subbar; background: #f0f0f0; position:absolute; height:32px; left:61; top: 33px; right:0; }
+
+.content { grid-area: content; background-color: #FFFFFF; float:left; top;65px; }
+
 body{
     margin-top: 0px; 
     margin-bottom: 0px; 
@@ -11,68 +47,6 @@ body{
     overflow: hidden; /* Hide scrollbars */
 }
 
-.top {
-  background-color: #F2F6FA;
-  position:absolute;
-  left:0; right:0;
-  height: 32px  
-}
+.header-icon { position: relative; left:17px; top:3px; height: 32px; }
 
-.main {
-  position: absolute;
-  left:61px; top:32px; right:0; bottom:0;
-  background-color: #FFFFFF;
-}
 
-.nav {
-  position:absolute;
-  left:0; top:32px; bottom: 0;
-  width: 60px;
-  /* height: 100%; */
-  background: #292f4f;
-}
-
-.navbar {
-    display: flex;
-    margin: auto;
-}
-
-.logo-image {
-    margin: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-	vertical-align: middle;
-	transform: translateY(50%);
-    text-align: center;
-}
-
-.content {
-    float: left;
-    padding: 15px;
-}
-
-.header-user-icon {
-	position: relative;
-    left:17px;
-	top:3px;
-	height: 32px;
-}
-
-.header-user-text {
-	position: fixed;
-    left:65px;
-	top:5px;
-	height: 32px;
-    color: black; 
-    font-size: 12pt; 
-    font-family: "Trebuchet MS", sans-serif;	
-}
-
-.header-logout-icon {
-	position: absolute
-    right: -100px;
-	top:3px;
-	height: 32px;
-}

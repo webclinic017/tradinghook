@@ -23,9 +23,9 @@
 
 .navbar-image { margin:0; width:60px; height:60px; border-radius:50%; overflow:hidden; vertical-align:middle; transform:translateY(50%); text-align:center; }
 
-.subbar { grid-area: subbar; background: #f0f0f0; position:absolute; height:32px; left:61; top: 33px; right:0; }
+.subbar { grid-area: subbar; background: #f0f0f0; position:absolute; height:32px; left:61px; top: 33px; right:0px; }
 
-.content { grid-area: content; background-color: #FFFFFF; position:absolute; left:0px; top:0px; bottom:0px; right:0px; }
+.content { grid-area: content; background-color: #FFFFFF; position:absolute; left:61px; top:0px; bottom:0px; right:0px; }
 
 body{ margin-top: 0px; margin-bottom:0px; margin-left:0px; margin-right:0px; padding: 0; color:black; font-size:10pt; 
     font-family: "Trebuchet MS", sans-serif; background-color: #E2E2E2; overflow: hidden; 

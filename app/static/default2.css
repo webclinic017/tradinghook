@@ -11,11 +11,11 @@
     ". . .";
 }
 
-.header { grid-area: header; background-color: #F2F6FA; position:absolute; left:0; right:0; height: 32px }
+.header { grid-area: header; background-color: #9fada3; position:absolute; left:0; right:0; height: 32px; }
 
-.nav { grid-area: nav; background: #292f4f; }
+.nav { grid-area: nav; background: #e3e0cc; width: 60px;}
 
-.bar { grid-area: bar; background: #111111; height: 32px }
+.bar { grid-area: bar; background: #f0f0f0; height: 32px; }
 
 .content { grid-area: content; }
 

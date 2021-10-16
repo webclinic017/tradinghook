@@ -32,7 +32,7 @@
 
 .subbar { grid-area: subbar; background: #f0f0f0; position:absolute; height:32px; left:61; top: 33px; right:0; }
 
-.content { grid-area: content; background-color: #FFFFFF; float:left; top;65px; }
+.content { grid-area: content; background-color: #FFFFFF; float:left; top;65px; bottom:0; right:0; }
 
 body{
     margin-top: 0px; 

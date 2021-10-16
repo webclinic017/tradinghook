@@ -15,9 +15,9 @@
 
 .navbar { grid-area: nav; background: #e3e0cc; width: 60px;}
 
-.subbar { grid-area: bar; background: #f0f0f0; height: 32px; }
+.subbar { grid-area: bar; background: #f0f0f0; height: 32px; position:absolute; left:61; top: 33px; right:0; }
 
-.content { grid-area: content; }
+.content { grid-area: content; background-color: #FFFFFF; }
 
 body{
     margin-top: 0px; 

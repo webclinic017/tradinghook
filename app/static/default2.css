@@ -32,9 +32,9 @@ body{
     overflow: hidden; /* Hide scrollbars */
 }
 
-.header-user-icon { position: relative; left:17px; top:3px; height: 32px; }
+.header-icon { position: relative; left:17px; top:3px; height: 32px; }
 
-.header-user-text {
+.header-text {
 	position: fixed;
     left:65px;
 	top:5px;
@@ -42,4 +42,15 @@ body{
     color: black; 
     font-size: 12pt; 
     font-family: "Trebuchet MS", sans-serif;	
+}
+
+.navbar-image {
+    margin: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+	vertical-align: middle;
+	transform: translateY(50%);
+    text-align: center;
 }

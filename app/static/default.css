@@ -19,20 +19,11 @@
 
 .navbar-flex { display: flex; margin: auto; }
 
-.navbar-image {
-    margin: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-	vertical-align: middle;
-	transform: translateY(50%);
-    text-align: center;
-}
+.navbar-image { margin: 0; width: 60px; height: 60px; border-radius: 50%; overflow: hidden; vertical-align: middle; transform: translateY(50%); text-align: center; }
 
 .subbar { grid-area: subbar; background: #f0f0f0; position:absolute; height:32px; left:61; top: 33px; right:0; }
 
-.content { grid-area: content; background-color: #FFFFFF; float:left; top;65px; bottom:0; right:0; }
+.content { grid-area: content; background-color: #FFFFFF; float:left; top:65px; bottom:0; right:0; }
 
 body{
     margin-top: 0px; 
@@ -48,5 +39,3 @@ body{
 }
 
 .header-icon { position: relative; left:17px; top:3px; height: 32px; }
-
-

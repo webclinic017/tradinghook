@@ -11,10 +11,23 @@
     ". . .";
 }
 
-.header { grid-area: header; }
+.header { grid-area: header; background-color: #F2F6FA; position:absolute; left:0; right:0; height: 32px }
 
 .nav { grid-area: nav; }
 
 .bar { grid-area: bar; }
 
 .content { grid-area: content; }
+
+body{
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+    margin-left: 0px; 
+    margin-right: 0px;
+    padding: 0;
+    color: black; 
+    font-size: 10pt; 
+    font-family: "Trebuchet MS", sans-serif;
+    background-color: #E2E2E2;
+    overflow: hidden; /* Hide scrollbars */
+}

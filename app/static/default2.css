@@ -13,13 +13,26 @@
 
 .header { grid-area: header; background-color: #9fada3; position:absolute; left:0; right:0; height:32px; }
 
+.header-text { position: fixed; left:65px; top:5px; height:32px; color:black; font-size:12pt; font-family: "Trebuchet MS", sans-serif; }
+
 .navbar { grid-area: navbar; background: #e3e0cc; position:absolute; width: 60px; left:0; top:32px; bottom:0; }
+
+.navbar-flex { display: flex; margin: auto; }
+
+.navbar-image {
+    margin: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+	vertical-align: middle;
+	transform: translateY(50%);
+    text-align: center;
+}
 
 .subbar { grid-area: subbar; background: #f0f0f0; position:absolute; height:32px; left:61; top: 33px; right:0; }
 
-.content { grid-area: content; background-color: #FFFFFF; float:left; }
-
-.navbar-flex { display: flex; margin: auto; }
+.content { grid-area: content; background-color: #FFFFFF; float:left; top;65px; }
 
 body{
     margin-top: 0px; 
@@ -36,23 +49,4 @@ body{
 
 .header-icon { position: relative; left:17px; top:3px; height: 32px; }
 
-.header-text {
-	position: fixed;
-    left:65px;
-	top:5px;
-	height: 32px;
-    color: black; 
-    font-size: 12pt; 
-    font-family: "Trebuchet MS", sans-serif;	
-}
 
-.navbar-image {
-    margin: 0;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-	vertical-align: middle;
-	transform: translateY(50%);
-    text-align: center;
-}

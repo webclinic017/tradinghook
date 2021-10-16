@@ -13,7 +13,7 @@
 
 .header { grid-area: header; background-color: #9fada3; position:absolute; left:0; right:0; height: 32px; }
 
-.navbar { grid-area: nav; background: #e3e0cc; width: 60px;}
+.navbar { grid-area: nav; background: #e3e0cc; position:absolute; width: 60px; left:0; top:32px; bottom: 0;}
 
 .subbar { grid-area: bar; background: #f0f0f0; height: 32px; position:absolute; left:61; top: 33px; right:0; }
 

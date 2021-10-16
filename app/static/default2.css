@@ -19,6 +19,8 @@
 
 .content { grid-area: content; background-color: #FFFFFF; float:left; }
 
+.navbar-flex { display: flex; margin: auto; }
+
 body{
     margin-top: 0px; 
     margin-bottom: 0px; 

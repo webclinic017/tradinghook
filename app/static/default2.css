@@ -6,18 +6,18 @@
   grid-auto-flow: row;
   grid-template-areas:
     "header header header"
-    "nav bar bar"
-    "nav content content"
+    "navbar subbar subbar"
+    "navbar content content"
     ". . .";
 }
 
-.header { grid-area: header; background-color: #9fada3; position:absolute; left:0; right:0; height: 32px; }
+.header { grid-area: header; background-color: #9fada3; position:absolute; left:0; right:0; height:32px; }
 
-.navbar { grid-area: nav; background: #e3e0cc; position:absolute; width: 60px; left:0; top:32px; bottom: 0;}
+.navbar { grid-area: navbar; background: #e3e0cc; position:absolute; width: 60px; left:0; top:32px; bottom:0; }
 
-.subbar { grid-area: bar; background: #f0f0f0; height: 32px; position:absolute; left:61; top: 33px; right:0; }
+.subbar { grid-area: subbar; background: #f0f0f0; position:absolute; height:32px; left:61; top: 33px; right:0; }
 
-.content { grid-area: content; background-color: #FFFFFF; }
+.content { grid-area: content; background-color: #FFFFFF; float:left; }
 
 body{
     margin-top: 0px; 

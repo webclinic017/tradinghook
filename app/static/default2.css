@@ -13,9 +13,9 @@
 
 .header { grid-area: header; background-color: #F2F6FA; position:absolute; left:0; right:0; height: 32px }
 
-.nav { grid-area: nav; }
+.nav { grid-area: nav; background: #292f4f; }
 
-.bar { grid-area: bar; }
+.bar { grid-area: bar; background: #111111; height: 32px }
 
 .content { grid-area: content; }
 

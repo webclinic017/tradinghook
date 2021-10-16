@@ -13,6 +13,8 @@
 
 .header { grid-area: header; background-color: #9fada3; position:absolute; left:0; right:0; height:32px; }
 
+.header-icon { position: relative; left:17px; top:3px; height: 32px; }
+
 .header-text { position: fixed; left:65px; top:5px; height:32px; color:black; font-size:12pt; font-family: "Trebuchet MS", sans-serif; }
 
 .navbar { grid-area: navbar; background: #e3e0cc; position:absolute; width: 60px; left:0; top:32px; bottom:0; }
@@ -25,17 +27,7 @@
 
 .content { grid-area: content; background-color: #FFFFFF; float:left; top:65px; bottom:0; right:0; }
 
-body{
-    margin-top: 0px; 
-    margin-bottom: 0px; 
-    margin-left: 0px; 
-    margin-right: 0px;
-    padding: 0;
-    color: black; 
-    font-size: 10pt; 
-    font-family: "Trebuchet MS", sans-serif;
-    background-color: #E2E2E2;
-    overflow: hidden; /* Hide scrollbars */
+body{ margin-top: 0px; margin-bottom: 0px; margin-left: 0px; margin-right: 0px; padding: 0; color: black; font-size: 10pt; 
+    font-family: "Trebuchet MS", sans-serif; background-color: #E2E2E2; overflow: hidden; 
 }
 
-.header-icon { position: relative; left:17px; top:3px; height: 32px; }

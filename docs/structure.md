@@ -22,17 +22,7 @@ Accountbalance:
     unsettled
 ```
 
-accounts:
-```bash
-  UserID:
-    ExchangeID:
-    AccountID:
-    ExchangeNickname
-    exchangeusername
-    Exchangepassword
-    exchangetoken
-```
-
+Exchanges:
 ```bash
 0 Webull Paper
 1 Webull Live
@@ -40,6 +30,17 @@ accounts:
 3 TD Ameritrade Live
 4 Alpaca Paper
 5 Alpaca Live
+```
+
+accounts:
+```bash
+  UserID:
+    InstanceID:
+    AccountID:
+    ExchangeNickname
+    exchangeusername
+    Exchangepassword
+    exchangetoken
 ```
 
 ```bash

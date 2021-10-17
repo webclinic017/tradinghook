@@ -22,7 +22,7 @@ Accountbalance:
     unsettled
 ```
 
-Account:
+accounts:
 ```bash
   UserID:
     ExchangeID:

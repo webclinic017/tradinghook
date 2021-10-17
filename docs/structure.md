@@ -44,7 +44,7 @@ accounts:
     exchangetoken
 ```
 
-In this way a single user may have multiple ExchangeID.
+In this way a single user may operate with multiple ExchangeIDs.
 i.e. If you have more than one TD Ameritrade accounts
 
 ```bash

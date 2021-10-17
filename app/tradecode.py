@@ -93,12 +93,6 @@ def query_accountbalance(fundid):
       account.exchangeid = int(row[2])
       account.settled = float(row[3])
       account.unsettled = float(row[4])
-    #for row in cursor:
-    #  print("userid = ", row[0])
-    #  print("fundid = ", row[1])
-    #  print("exchangeid = ", row[2])
-    #  print("settled = ", row[3])
-    #  print("unsettled = ", row[4], "\n") 
     return account
 
 # -----------
@@ -117,12 +111,6 @@ def query_account(accountid):
       account.exchangeid = int(row[2])
       account.settled = float(row[3])
       account.unsettled = float(row[4])
-    #for row in cursor:
-    #  print("userid = ", row[0])
-    #  print("fundid = ", row[1])
-    #  print("exchangeid = ", row[2])
-    #  print("settled = ", row[3])
-    #  print("unsettled = ", row[4], "\n") 
     return account
 
 # ------------------------------
@@ -136,7 +124,7 @@ def create_connection(db_file):
         print(e)
     return conn
 
-# -------------------------------------------------------------------
+# ------------------------------
 
 def have_position(x):
     rows = []
@@ -156,7 +144,7 @@ def have_position(x):
         found = True    
     return found
 
-# -------------------------------------------------------------------
+# ------------------------------
 
 def return_position(x):
     rows = []
@@ -171,7 +159,7 @@ def return_position(x):
         print("Error! cannot create the database connection.")
     return rows
 
-# -------------------------------------------------------------------
+# ------------------------------
 
 def create_table(conn, create_table_sql):
     try:
@@ -180,10 +168,10 @@ def create_table(conn, create_table_sql):
     except Error as e:
         print(e)
 
-# ------------------------------------------------------------------- 
+# ------------------------------
     
 def create_accountbalance():
-    sql_create_table = """ CREATE TABLE IF NOT EXISTS accountbalance (
+    sql_statement = """ CREATE TABLE IF NOT EXISTS accountbalance (
                                         userid text,
                                         fundid text,
                                         exchangeid text,
@@ -195,7 +183,7 @@ def create_accountbalance():
     # create tables
     if conn is not None:
         # create projects table
-        create_table(conn, sql_create_table)
+        create_table(conn, sql_statement)
     else:
         print("Error! cannot create the database connection.")
 
@@ -235,14 +223,14 @@ def create_position_table():
     conn = create_connection(CONFIG.DATABASE)
     # create tables
     if conn is not None:
-        create_table(conn, statement)
+        create_table(conn, sql_statement)
     else: 
         print("Error! cannot create the database connection.")
         
 # ------------------------------
 
 def create_trades_table():    
-    sql_create_table = """ CREATE TABLE IF NOT EXISTS trades (
+    sql_statement = """ CREATE TABLE IF NOT EXISTS trades (
                            date text,
                            ticker text,
                            qty  text,   
@@ -255,7 +243,7 @@ def create_trades_table():
     conn = create_connection(CONFIG.DATABASE)
     # create tables
     if conn is not None:
-        create_table(conn, sql_create_table)
+        create_table(conn, sql_statement)
     else: 
         print("Error! cannot create the database connection.")
         
@@ -311,7 +299,7 @@ def query_ExchangeAccount(InstanceID):
       exchangeaccount.exchangenickname = row[3]
       exchangeaccount.exchangeusername = row[4]
       exchangeaccount.exchangepassword = row[5]
-      exchangeaccount.exchangetoken = row[6])
+      exchangeaccount.exchangetoken = row[6]
     return exchangeaccount
 
 # ------------------------------ 
@@ -355,7 +343,7 @@ def transactions_to_df(data):
     df1 = df1.append(bar,ignore_index=True)
   return (df1)
 
-# -------------------------------------------------------------------
+# ------------------------------
     
 def list_to_df(data):
   out = {}
@@ -370,7 +358,7 @@ def list_to_df(data):
     df1 = df1.append(bar,ignore_index=True)
   return (df1)    
   
-# ---------------------------------------------------------------------------
+# ------------------------------
 
 def add_position(trade):
     print("TRADINGHOOK.ADD_POSITION: [ENTER]")
@@ -392,7 +380,7 @@ def add_position(trade):
         print("oops4")    
     print("TRADINGHOOK: [EXIT]")
 
-# ---------------------------------------------------------------------------
+# ------------------------------
 
 def record_transaction(transaction):
     print("TRADINGHOOK.RECORD_TRANSACTION: [ENTER]")
@@ -417,7 +405,7 @@ def record_transaction(transaction):
         print("oops4")    
     print("TRADINGHOOK.RECORD_TRANSACTION: [EXIT]")
 
-#-------------------------------------------------------------
+# ------------------------------
 
 def delete_position(x):
     print("TRADERDB.DELETE_POSITION:")
@@ -433,7 +421,7 @@ def delete_position(x):
         print("Error! cannot create the database connection.")
     cursor.close()
 
-# -------------------------------
+# ------------------------------
 
 def return_transactions():
     rows = []

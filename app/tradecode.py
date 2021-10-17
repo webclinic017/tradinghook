@@ -12,21 +12,29 @@ from webull import webull
 from webull import paper_webull
 import alpaca_trade_api as tradeapi
 from datetime import date
-from app.common_db import is_present 
+from app.common_db import is_table_present 
 
 # ------------------------------
 
-class Account:
-
+class AccountBalance:
     def __init__(self):
       self.userid = 0
       self.fundid = 0
       self.exchangeid = 0
       self.settled = 0
       self.unsettled = 0
+
+class ExchangeAccount:
+    def __init__(self):
+      self.InstanceID = 0
+      self.UserID = 0
+      self.ExchangeID = 0
+      self.exchangenickname = ""
+      self.exchangeusername = ""
+      self.exchangepassword = ""      
+      self.exchangetoken = ""
       
 class Transaction:
-
     def __init__(self):
       self.userid = 0
       self.symbol = 0
@@ -78,9 +86,33 @@ def query_accountbalance(fundid):
     sqlite_statement = ("SELECT * FROM accountbalance WHERE fundid = \""+str(fundid)+"\";")
     #print(sqlite_statement)
     cursor = conn.execute(sqlite_statement)
-    account = Account()
+    account = AccountBalance()
     for row in cursor:
       account.userid = int(row[0])
+      account.fundid = int(row[1])
+      account.exchangeid = int(row[2])
+      account.settled = float(row[3])
+      account.unsettled = float(row[4])
+    #for row in cursor:
+    #  print("userid = ", row[0])
+    #  print("fundid = ", row[1])
+    #  print("exchangeid = ", row[2])
+    #  print("settled = ", row[3])
+    #  print("unsettled = ", row[4], "\n") 
+    return account
+
+# -----------
+
+def query_account(accountid):
+    conn = create_connection(CONFIG.DATABASE)
+    #print(fundid)
+    #print(type(fundid))
+    sqlite_statement = ("SELECT * FROM accounts WHERE accountid = \""+str(accountid)+"\";")
+    #print(sqlite_statement)
+    cursor = conn.execute(sqlite_statement)
+    account = Account()
+    for row in cursor:
+      account.exchangeid = int(row[0])
       account.fundid = int(row[1])
       account.exchangeid = int(row[2])
       account.settled = float(row[3])
@@ -96,11 +128,6 @@ def query_accountbalance(fundid):
 # ------------------------------
 
 def create_connection(db_file):
-    """ create a database connection to the SQLite database
-        specified by db_file
-    :param db_file: database file
-    :return: Connection object or None
-    """
     conn = None
     try:
         conn = sqlite3.connect(db_file)
@@ -232,8 +259,43 @@ def create_trades_table():
     else: 
         print("Error! cannot create the database connection.")
         
+# ------------------------------
+
+def create_exchangeaccounts_table():    
+    sql_create_table = """ CREATE TABLE IF NOT EXISTS exchangeaccounts (
+                           InstanceID text,
+                           UserID text,
+                           ExchangeID text,
+                           exchangenickname text,
+                           exchangeusername  text,   
+                           exchangepassword text,
+                           exchangetoken text
+                        ); """
+    # create a database connection
+    conn = create_connection(CONFIG.DATABASE)
+    # create tables
+    if conn is not None:
+        create_table(conn, sql_create_table)
+    else: 
+        print("Error! cannot create the database connection.")
+        
  # ------------------------------
 
+def insert_into_EchangeAccount(exaccount):
+    conn = create_connection(CONFIG.DATABASE)
+    sqlite_statement = ("INSERT INTO exchangeaccounts (userid,fundid,exchangeid,settled,unsettled)\n" +
+                           "VALUES(\""+str(account['userid'])+"\"," +
+                             "\""+str(account['fundid'])+"\","+
+                             "\""+str(account['exchangeid'])+"\","+
+                             "\""+str(account['settled'])+"\","+
+                             "\""+str(account['unsettled'])+"\");")
+    cursor = conn.cursor()
+    count = cursor.execute(sqlite_statement)
+    conn.commit()
+    cursor.close()
+ 
+ # ------------------------------ 
+ 
 def insert_into_accountbalance(account):
     conn = create_connection(CONFIG.DATABASE)
     print(account)
@@ -588,7 +650,6 @@ def parse(x):
   ticker = x["ticker"]
   action = x["order_action"]
   close = x["close"]
-  print(Fore.MAGENTA + Style.BRIGHT + time + " " + ticker + " " + action + " " + close + Style.RESET_ALL)
 
   if action == "buy":
     trade_buy(x)
@@ -598,25 +659,27 @@ def parse(x):
       trade_sell(x)
     else:
       print("attempted to Sell something we do not have a positon on and we DO NOT have MARGINS enabled")
-  #
-  print("ENDPARSE:")  
   
 # -------------------------------
   
 def init_tradecode():
     logging.info("tradecode_init()")
-    if not is_present("transactions"):
+    if not is_table_present("transactions"):
         logging.info("creating transactions table.")
         create_transactions_table() 
     
-    if not is_present("position"):  
+    if not is_table_present("position"):  
         logging.info("creating position table.")
         create_position_table()
       
-    if not is_present("accountbalance"):
+    if not is_table_present("accountbalance"):
         logging.info("creating accountbalance table.")
         create_accountbalance()
 
-    if not is_present("trades"):
+    if not is_table_present("trades"):
         logging.info("creating trades table.")
         create_trades_table()    
+        
+    if not is_table_present("exchangeccounts"):
+        logging.info("creating exchangeaccounts table.")
+        create_exchangeaccounts_table()     

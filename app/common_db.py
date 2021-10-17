@@ -1,8 +1,7 @@
 import sqlite3
 import config as CONFIG
-import logging
 
-def is_present(table):
+def is_table_present(table):
     conn = sqlite3.connect(CONFIG.DATABASE)
     c = conn.cursor()
     try:

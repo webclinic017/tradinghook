@@ -2,7 +2,7 @@ import sqlite3
 import os.path
 import config as CONFIG
 import logging
-from app.common_db import is_present
+from app.common_db import is_table_present
 
 # ------------------------------
 
@@ -14,7 +14,7 @@ def init_db():
         logging.info("inserting initial user.")
         insert_user(1, "admin", "p@$$w0rd")
     else:            
-        if is_present('users') == False:
+        if is_table_present('users') == False:
             logging.info("creating users table. YYY")
             create_users_table()
             logging.info("inserting initial user.")

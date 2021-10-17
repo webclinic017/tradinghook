@@ -34,7 +34,6 @@ Exchanges:
 
 ExchangeAccount:
 ```bash
-  UserID:
     InstanceID:
     UserID:
     ExchangeID:

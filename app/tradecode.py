@@ -289,7 +289,7 @@ def insert_into_ExchangeAccount(exaccount):
 
 def query_ExchangeAccount(InstanceID):
     conn = create_connection(CONFIG.DATABASE)
-    sql_statement = ("SELECT * FROM exchangeaccounts WHERE accountid = \""+str(InstanceID)+"\";")
+    sql_statement = ("SELECT * FROM exchangeaccounts WHERE InstanceID = \""+str(InstanceID)+"\";")
     cursor = conn.execute(sql_statement)
     excahngeaccount = ExchangeAccount()
     for row in cursor:

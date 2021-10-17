@@ -36,7 +36,7 @@ accounts:
 ```bash
   UserID:
     InstanceID:
-    AccountID:
+    UserID:
     ExchangeID:
     exchangenickname
     exchangeusername

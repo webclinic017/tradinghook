@@ -14,11 +14,11 @@ User
 Account:
 ```bash
   UserID:
-  ExchangeID:
-  ExchangeNickname
-  exchangeusername
-  Exchangepassword
-  exchangetoken
+    ExchangeID:
+    ExchangeNickname
+    exchangeusername
+    Exchangepassword
+    exchangetoken
 ```
 
 ```bash

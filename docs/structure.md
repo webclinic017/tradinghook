@@ -38,9 +38,9 @@ accounts:
     InstanceID:
     AccountID:
     ExchangeID:
-    ExchangeNickname
+    exchangenickname
     exchangeusername
-    Exchangepassword
+    exchangepassword
     exchangetoken
 ```
 

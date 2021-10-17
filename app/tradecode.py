@@ -223,7 +223,7 @@ def create_transactions_table():
 # ------------------------------
 
 def create_position_table():    
-    sql_create_table = """ CREATE TABLE IF NOT EXISTS position (
+    sql_statement = """ CREATE TABLE IF NOT EXISTS position (
                            time text,
                            symbol text,
                            side  text,   
@@ -235,7 +235,7 @@ def create_position_table():
     conn = create_connection(CONFIG.DATABASE)
     # create tables
     if conn is not None:
-        create_table(conn, sql_create_table)
+        create_table(conn, statement)
     else: 
         print("Error! cannot create the database connection.")
         
@@ -262,7 +262,7 @@ def create_trades_table():
 # ------------------------------
 
 def create_exchangeaccounts_table():    
-    sql_create_table = """ CREATE TABLE IF NOT EXISTS exchangeaccounts (
+    sql_statement = """ CREATE TABLE IF NOT EXISTS exchangeaccounts (
                            InstanceID text,
                            UserID text,
                            ExchangeID text,
@@ -275,7 +275,7 @@ def create_exchangeaccounts_table():
     conn = create_connection(CONFIG.DATABASE)
     # create tables
     if conn is not None:
-        create_table(conn, sql_create_table)
+        create_table(conn, sql_statement)
     else: 
         print("Error! cannot create the database connection.")
         
@@ -296,8 +296,25 @@ def insert_into_ExchangeAccount(exaccount):
     count = cursor.execute(sqlite_statement)
     conn.commit()
     cursor.close()
- 
- # ------------------------------ 
+
+# ------------------------------ 
+
+def query_ExchangeAccount(InstanceID):
+    conn = create_connection(CONFIG.DATABASE)
+    sql_statement = ("SELECT * FROM accounts WHERE accountid = \""+str(InstanceID)+"\";")
+    cursor = conn.execute(sql_statement)
+    excahngeaccount = ExchangeAccount()
+    for row in cursor:
+      exchangeaccount.InstanceID = int(row[0])
+      exchangeaccount.UserID = int(row[1])
+      exchangeaccount.ExchangeID = int(row[2])
+      exchangeaccount.exchangenickname = row[3]
+      exchangeaccount.exchangeusername = row[4]
+      exchangeaccount.exchangepassword = row[5]
+      exchangeaccount.exchangetoken = row[6])
+    return exchangeaccount
+
+# ------------------------------ 
  
 def insert_into_accountbalance(account):
     conn = create_connection(CONFIG.DATABASE)

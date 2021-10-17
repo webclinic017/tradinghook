@@ -281,14 +281,17 @@ def create_exchangeaccounts_table():
         
  # ------------------------------
 
-def insert_into_EchangeAccount(exaccount):
+def insert_into_ExchangeAccount(exaccount):
     conn = create_connection(CONFIG.DATABASE)
-    sqlite_statement = ("INSERT INTO exchangeaccounts (userid,fundid,exchangeid,settled,unsettled)\n" +
-                           "VALUES(\""+str(account['userid'])+"\"," +
-                             "\""+str(account['fundid'])+"\","+
-                             "\""+str(account['exchangeid'])+"\","+
-                             "\""+str(account['settled'])+"\","+
-                             "\""+str(account['unsettled'])+"\");")
+    sqlite_statement = ("INSERT INTO exchangeaccounts (InstanceID,UserID,ExchangeId," +
+                           "exchangenickname,exchangeusername,exchangepassword,exchangetoken)\n" +
+                           "VALUES(\""+str(exaccount.InstanceID)+"\"," +
+                             "\""+str(exaccount.UserID)+"\","+
+                             "\""+str(exaccount.ExchangeID)+"\","+
+                             "\""+str(exaccount.exchangenickname)+"\","+
+                             "\""+str(exaccount.exchangeusername)+"\","+
+                             "\""+str(exaccount.exchangepassword)+"\","+
+                             "\""+str(exaccount.exchangetoken)+"\");")
     cursor = conn.cursor()
     count = cursor.execute(sqlite_statement)
     conn.commit()
@@ -310,7 +313,6 @@ def insert_into_accountbalance(account):
     cursor = conn.cursor()
     count = cursor.execute(sqlite_statement)
     conn.commit()
-    print("Record inserted successfully into TRADINGHOOK.DB table ", cursor.rowcount)
     cursor.close()
     
 # ------------------------------

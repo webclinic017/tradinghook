@@ -34,13 +34,13 @@ Exchanges:
 
 ExchangeAccount:
 ```bash
-    InstanceID:
-    UserID:
-    ExchangeID:
-    exchangenickname
-    exchangeusername
-    exchangepassword
-    exchangetoken
+InstanceID:
+UserID:
+ExchangeID:
+exchangenickname
+exchangeusername
+exchangepassword
+exchangetoken
 ```
 
 In this way a single user may operate with multiple ExchangeIDs.

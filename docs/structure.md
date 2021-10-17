@@ -15,6 +15,7 @@ Account:
 ```bash
   UserID:
   ExchangeID:
+  ExchangeNickname
   exchangeusername
   Exchangepassword
   exchangetoken

@@ -46,14 +46,14 @@ exchangetoken
 In this way a single user may operate with multiple ExchangeIDs.
 i.e. If you have more than one TD Ameritrade accounts
 
-```bash
 Condition
-  UserID
-  Symbol
-  Passphrase
-  FundID
-  Tradetype
-  condition
+```bash
+UserID
+Symbol
+Passphrase
+FundID
+Tradetype
+condition
 ```
 
 ## Initial Doc

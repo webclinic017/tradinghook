@@ -32,7 +32,7 @@ Exchanges:
 5 Alpaca Live
 ```
 
-accounts:
+ExchangeAccounts:
 ```bash
   UserID:
     InstanceID:

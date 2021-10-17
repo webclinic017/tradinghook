@@ -22,7 +22,7 @@ Accountbalance:
     unsettled
 ```
 
-Exchanges:
+ExchangeID:
 ```bash
 0 Webull Paper
 1 Webull Live

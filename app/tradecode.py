@@ -291,7 +291,7 @@ def query_ExchangeAccount(InstanceID):
     conn = create_connection(CONFIG.DATABASE)
     sql_statement = ("SELECT * FROM exchangeaccounts WHERE InstanceID = \""+str(InstanceID)+"\";")
     cursor = conn.execute(sql_statement)
-    excahngeaccount = ExchangeAccount()
+    exchangeaccount = ExchangeAccount()
     for row in cursor:
       exchangeaccount.InstanceID = int(row[0])
       exchangeaccount.UserID = int(row[1])

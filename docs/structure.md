@@ -37,11 +37,15 @@ accounts:
   UserID:
     InstanceID:
     AccountID:
+    ExchangeID:
     ExchangeNickname
     exchangeusername
     Exchangepassword
     exchangetoken
 ```
+
+In this way a single user may have multiple ExchangeID.
+i.e. If you have more than one TD Ameritrade accounts
 
 ```bash
 Condition

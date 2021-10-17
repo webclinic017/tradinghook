@@ -11,6 +11,17 @@ User
   Password
   Fullname
 ```
+
+Accountbalance:
+```bash
+  UserID:
+    userid:
+    fundid
+    exchangeid
+    settled
+    unsettled
+```
+
 Account:
 ```bash
   UserID:

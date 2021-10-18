@@ -481,71 +481,42 @@ def webull_exchange_buy(trade):
 # ------------------------------- 
   
 def webull_live_buy(trade):
-  print("WEBULL_LIVE_BUY: [ENTER]")
-  config = configparser.ConfigParser()
-  config.read_file(open('defaults.cfg'))
-  username = config['DEFAULT']['username']
-  password = config['DEFAULT']['password']
-  token = config['DEFAULT']['token']
-  #print(username)
-  #print(password)
-  #print(token)
-  #print("POINT1:")
-  wb = webull()
-  #print("POINT2:")  
-  a = wb.login(username, password)
-  #print("x:", a)
-  #print("POINT3:")    
-  a = wb.get_trade_token(token)
-  #print("x:", a)
-  #print("POINT4:")  
-  ticker = trade["ticker"]
-  print("ticker:",ticker)  
-  amt = float(trade["close"])
-  #print("type:", type(amt)) 
-  print("amt:", amt)
-  #default action = BUY
-  a = wb.place_order(ticker, price=amt, quant=20) 
-  print("order status:", a)
-  add_position(trade)
-  #transaction = Transaction()
-  #transaction.userid = 1
-  #transaction.symbol = trade["ticker"]
-  #transaction.side = "BUY"
-  #transaction.qty = 20
-  #transaction.price = float(trade["close"])
-  #transaction.orderplaced = trade["time"]
-  #transaction.orderfilled = "2021-08-13T13:40:00Z" 
-  #record_transaction(transaction)
-  print("WEBULL_LIVE_BUY: [EXIT]")    
+    logging.info("WEBULL_LIVE_BUY: [ENTER]")
+    ea = tradecode.query_ExchangeAccount(2)    
+    wb = webull()
+    a = wb.login(ea.exchangeusername, ea.exchangepassword)
+    a = wb.get_trade_token(ea.exchangetoken)
+    ticker = trade["ticker"]
+    logging.info("ticker: {} ".format(ticker))  
+    amt = float(trade["close"])
+    #print("type:", type(amt)) 
+    #print("amt:", amt)
+    #default action = BUY
+    a = wb.place_order(ticker, price=amt, quant=20) 
+    logging.info("order status: {}".format(a))
+    add_position(trade)
+    logging.info("WEBULL_LIVE_BUY: [EXIT]")    
  
 # -------------------------------
 
 def webull_exchange_sell(x):
-  print("WEBULL_LIVE_SELL: [ENTER]")
-  config = configparser.ConfigParser()
-  config.read_file(open('defaults.cfg'))
-  username = config['DEFAULT']['username']
-  password = config['DEFAULT']['password']
-  token = config['DEFAULT']['token']
-  #print(username)
-  #print(password)
-  #print(token)
-  wb = paper_webull()
-  a = wb.login(username, password)
-  #print("x:", a)
-  a = wb.get_trade_token(token)
-  #print("x:", a)
-  a1 = x["ticker"]
-  #print("type:", type(a1))
-  print("ticker:",a1)  
-  amt = float(x["close"])
-  #print("type:", type(amt)) 
-  print("amt:", amt)
-  a = wb.place_order(stock=a1, price=amt, quant=20, action="SELL")
-  print("order status:", a)
-  delete_position(x["ticker"]) 
-  print("WEBULL_LIVE_SELL: [EXIT]")  
+    logging.info("WEBULL_LIVE_SELL: [ENTER]")
+    ea = tradecode.query_ExchangeAccount(2)
+    wb = paper_webull()
+    a = wb.login(username, password)
+    #print("x:", a)
+    a = wb.get_trade_token(token)
+    #print("x:", a)
+    a1 = x["ticker"]
+    #print("type:", type(a1))
+    print("ticker:",a1)  
+    amt = float(x["close"])
+    #print("type:", type(amt)) 
+    print("amt:", amt)
+    a = wb.place_order(stock=a1, price=amt, quant=20, action="SELL")
+    print("order status:", a)
+    delete_position(x["ticker"]) 
+    logging.info("WEBULL_LIVE_SELL: [EXIT]")  
   
 # -------------------------------
 
@@ -604,72 +575,42 @@ def log(msg):
 # -------------------------------
 
 def trade_buy(trade):
-  print("TRADE_BUY:")
-  #fname = "config.ini"
-  #config = configparser.ConfigParser()
-  #config.read_file(open(fname))
-  #balance_str = config['DEFAULT']['balance']
-  #balance = float(balance_str)
-  #print("balance", balance)
-  #delta = trade["close"]
-  #balance -= float(delta)
-  #balance_str = str(balance)
-  #config.set('DEFAULT', 'balance', balance_str)
-  #save the file
-  #with open(fname, 'w') as configfile:
-  #  config.write(configfile)
-  log("buy: " + trade["ticker"] + " " + trade["close"])
-  # make decision
+  logging.info("TRADE_BUY:")
   # webull_exchange_buy(trade)
   webull_live_buy(trade)
 
 # -------------------------------
   
 def trade_sell(x):
-  print("TRADE_SELL: [ENTER]")
-  #fname = "config.ini"
-  # config = configparser.ConfigParser()
-  # config.read_file(open(fname))
-  # balance_str = config['DEFAULT']['balance']
-  # balance = float(balance_str)
-  # print("balance", balance)  
-  # delta = x["close"]
-  # balance += float(delta)
-  # balance_str = str(balance)
-  #config.set('DEFAULT', 'balance', balance_str)
-  #save the file
-  #with open(fname, 'w') as configfile:
-  #  config.write(configfile)
-  log("sell: " + x["ticker"] + " " + x["close"])
+  logging.info("TRADE_SELL: [ENTER]")
   #webull_exchange_sell(x)
   webull_live_sell(x)
 
 # -------------------------------
 
 def parse(x):
-  if (type(x)) is bytes: 
+    if (type(x)) is bytes: 
     x = json.loads(x)
-  print("----[New Order]----------------------------------")
-  #print(type(x))
-  #print (x)
-  #print ("----")
-  time = x["time"]
-  ticker = x["ticker"]
-  action = x["order_action"]
-  close = x["close"]
+    logging.info("----[New Order]----------------------------------")
+    time = x["time"]
+    ticker = x["ticker"]
+    action = x["order_action"]
+    close = x["close"]
 
-  logging.info("parse()")
-  logging.info("time:{}".format(time))
-  logging.info("action:{}".format(action))
+    logging.info("parse()")
+    logging.info("time:{}".format(time))
+    logging.info("symbol:{}".format(ticker))
+    logging.info("action:{}".format(action))
+    logging.info("price:{}".format(close))
   
-  #if action == "buy":
-  #  trade_buy(x)
-  #elif action =="sell":
-  #  q = have_position(x["ticker"])
-  #  if q == True:
-  #    trade_sell(x)
-  #  else:
-  #    print("attempted to Sell something we do not have a positon on and we DO NOT have MARGINS enabled")
+    if action == "buy":
+        trade_buy(x)
+    elif action =="sell":
+        q = have_position(x["ticker"])
+        if q == True:
+            trade_sell(x)
+        else:
+            logging.info("attempted to Sell something we do not have a positon on and we DO NOT have MARGINS enabled")
   
 # -------------------------------
   

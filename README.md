@@ -10,6 +10,10 @@ The strategies being designed might be to MAX out everything.  Or - by design - 
 
 In the process I will incorporate a number of features.  1) Monitor reality and make sure a "sell" transaction is acted on.  It is possible in a fast moving enviornment for a trade being placed to already be out of the action and would otherwise just sit.  2) Sync accounts to verify settled and unsettled acounts as well as ingest changes caused by dividends.
 
+## Status
+
+Posted 10/17/2021 - Yes this is an active project.  There will be updates to this on a regular basis.  No I do not see this as being a trivial project .. but I want it done.
+
 ## Docs
 
 Please read the "theory-of-operation.rst" file.  Or at least this is what I am posting at the moment.  This will be more of a introduction of how this can be used.

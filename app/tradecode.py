@@ -361,33 +361,33 @@ def list_to_df(data):
 # ------------------------------
 
 def add_position(trade):
-    print("TRADINGHOOK.ADD_POSITION: [ENTER]")
-    print(trade)
+    logging.info("TRADINGHOOK.ADD_POSITION: [ENTER]")
+    #print(trade)
     conn = create_connection(CONFIG.DATABASE)
     if conn is not None:
-        sqlite_insert_query = ("INSERT INTO position (time,ticker,qty,price,amount)\n" +
+        sql_statement = ("INSERT INTO position (time,ticker,qty,price,amount)\n" +
                                "VALUES(\""+trade['time']+"\"," +
-                               "\""+trade['ticker']+"\","+
+                               "\""+trade['symbol']+"\","+
                                "\""+"1"+"\","+
                                "\""+trade['close']+"\","+
                                "\""+"1"+"\")")
         cursor = conn.cursor()
-        count = cursor.execute(sqlite_insert_query)
+        count = cursor.execute(sql_statement)
         conn.commit()
-        print("Record inserted successfully into table POSITION:", cursor.rowcount)
+        logging.info("Record inserted successfully into table POSITION: {}".format(cursor.rowcount))
         cursor.close()
     else:
-        print("oops4")    
-    print("TRADINGHOOK: [EXIT]")
+        logging.info("oops4")    
+    logging.info("TRADINGHOOK: [EXIT]")
 
 # ------------------------------
 
 def record_transaction(transaction):
-    print("TRADINGHOOK.RECORD_TRANSACTION: [ENTER]")
-    print(trade)
+    logging.info(("TRADINGHOOK.RECORD_TRANSACTION: [ENTER]")
+    #print(trade)
     conn = create_connection(CONFIG.DATABASE)
     if conn is not None:
-        sqlite_insert_query = ("INSERT INTO transactions (userid,symbol,side,qty,price,orderplaced,orderfilled)\n" +
+        sql_statment = ("INSERT INTO transactions (userid,symbol,side,qty,price,orderplaced,orderfilled)\n" +
                                "VALUES(\""+transaction['userid']+"\"," +
                                "\""+transaction['symbol']+"\"," +
                                "\""+transaction['side']+"\","+
@@ -397,13 +397,13 @@ def record_transaction(transaction):
                                "\""+transaction['orderfilled']+"\");")
         print(sqlite_insert_query)
         cursor = conn.cursor()
-        count = cursor.execute(sqlite_insert_query)
+        count = cursor.execute(sql_statement)
         conn.commit()
-        print("Record inserted successfully into table POSITION:", cursor.rowcount)
+        logging.info("Record inserted successfully into table POSITION: {}".format(cursor.rowcount))
         cursor.close()
     else:
-        print("oops4")    
-    print("TRADINGHOOK.RECORD_TRANSACTION: [EXIT]")
+        logging.info(("oops4")    
+    logging.info(("TRADINGHOOK.RECORD_TRANSACTION: [EXIT]")
 
 # ------------------------------
 

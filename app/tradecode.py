@@ -402,8 +402,8 @@ def record_transaction(transaction):
         logging.info("Record inserted successfully into table POSITION: {}".format(cursor.rowcount))
         cursor.close()
     else:
-        logging.info(("oops4")    
-    logging.info(("TRADINGHOOK.RECORD_TRANSACTION: [EXIT]")
+        logging.info("oops4")    
+    logging.info("TRADINGHOOK.RECORD_TRANSACTION: [EXIT]")
 
 # ------------------------------
 

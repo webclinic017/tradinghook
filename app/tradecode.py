@@ -482,7 +482,7 @@ def webull_exchange_buy(trade):
   
 def webull_live_buy(trade):
     logging.info("WEBULL_LIVE_BUY: [ENTER]")
-    ea = tradecode.query_ExchangeAccount(2)    
+    ea = query_ExchangeAccount(2)    
     wb = webull()
     a = wb.login(ea.exchangeusername, ea.exchangepassword)
     a = wb.get_trade_token(ea.exchangetoken)
@@ -501,7 +501,7 @@ def webull_live_buy(trade):
 
 def webull_exchange_sell(x):
     logging.info("WEBULL_LIVE_SELL: [ENTER]")
-    ea = tradecode.query_ExchangeAccount(2)
+    ea = query_ExchangeAccount(2)
     wb = paper_webull()
     a = wb.login(username, password)
     #print("x:", a)

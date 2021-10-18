@@ -365,7 +365,7 @@ def add_position(trade):
     #print(trade)
     conn = create_connection(CONFIG.DATABASE)
     if conn is not None:
-        sql_statement = ("INSERT INTO position (time,ticker,qty,price,amount)\n" +
+        sql_statement = ("INSERT INTO position (time,symbol,qty,price,amount)\n" +
                                "VALUES(\""+trade['time']+"\"," +
                                "\""+trade['ticker']+"\","+
                                "\""+"1"+"\","+

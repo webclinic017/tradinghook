@@ -58,7 +58,8 @@ condition
 ```
 ```bash
 0: no condition
-1: order 30, buy InstanceID
+1: if global-a >0 ; global-a -= 1; order 30, buy Symbol from InstanceID
+2: if global-b >0 ; global-b -= 1; order 30, buy Symbol OCO 30/10 InstnaceID
 ```
 
 0,AAPL,ABC1234,1,

@@ -513,7 +513,7 @@ def webull_exchange_sell(x):
     amt = float(x["close"])
     #print("type:", type(amt)) 
     print("amt:", amt)
-    a = wb.place_order(stock=a1, price=amt, quant=20, action="SELL")
+    a = wb.place_order(stock=a1, price=amt, quant=30, action="SELL")
     print("order status:", a)
     delete_position(x["ticker"]) 
     logging.info("WEBULL_LIVE_SELL: [EXIT]")  
@@ -521,30 +521,22 @@ def webull_exchange_sell(x):
 # -------------------------------
 
 def webull_live_sell(x):
-  print("WEBULL_LIVE_SELL: [ENTER]")
-  config = configparser.ConfigParser()
-  config.read_file(open('defaults.cfg'))
-  username = config['DEFAULT']['username']
-  password = config['DEFAULT']['password']
-  token = config['DEFAULT']['token']
-  #print(username)
-  #print(password)
-  #print(token)
-  wb = webull()
-  a = wb.login(username, password)
-  #print("x:", a)
-  a = wb.get_trade_token(token)
-  #print("x:", a)
-  a1 = x["ticker"]
-  #print("type:", type(a1))
-  print("ticker:",a1)  
-  amt = float(x["close"])
-  #print("type:", type(amt)) 
-  print("amt:", amt)
-  a = wb.place_order(stock=a1, price=amt, quant=20, action="SELL")
-  print("order status:", a)
-  delete_position(x["ticker"]) 
-  print("WEBULL_LIVE_SELL: [EXIT]")    
+    logging.info("WEBULL_LIVE_SELL: [ENTER]")
+    ea = query_ExchangeAccount(2)
+    wb = webull()
+    a = wb.login(ea.exchangeusername, ea.exchangepassword)
+    a = wb.get_trade_token(ea.exchangetoken)
+    #print("x:", a)
+    a1 = x["ticker"]
+    #print("type:", type(a1))
+    #print("ticker:",a1)  
+    amt = float(x["close"])
+    #print("type:", type(amt)) 
+    #print("amt:", amt)
+    a = wb.place_order(stock=a1, price=amt, quant=30, action="SELL")
+    logging.info("order status: {}".format(a))
+    delete_position(x["ticker"]) 
+    logging.info("WEBULL_LIVE_SELL: [EXIT]")    
 
 # -------------------------------
 

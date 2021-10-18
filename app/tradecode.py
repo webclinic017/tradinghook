@@ -492,7 +492,7 @@ def webull_live_buy(trade):
     #print("type:", type(amt)) 
     #print("amt:", amt)
     #default action = BUY
-    a = wb.place_order(ticker, price=amt, quant=20) 
+    a = wb.place_order(ticker, price=amt, quant=30) 
     logging.info("order status: {}".format(a))
     add_position(trade)
     logging.info("WEBULL_LIVE_BUY: [EXIT]")    

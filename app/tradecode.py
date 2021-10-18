@@ -590,27 +590,27 @@ def trade_sell(x):
 
 def parse(x):
     if (type(x)) is bytes: 
-    x = json.loads(x)
-    logging.info("----[New Order]----------------------------------")
-    time = x["time"]
-    ticker = x["ticker"]
-    action = x["order_action"]
-    close = x["close"]
+        x = json.loads(x)
+        logging.info("----[New Order]----------------------------------")
+        time = x["time"]
+        ticker = x["ticker"]
+        action = x["order_action"]
+        close = x["close"]
 
-    logging.info("parse()")
-    logging.info("time:{}".format(time))
-    logging.info("symbol:{}".format(ticker))
-    logging.info("action:{}".format(action))
-    logging.info("price:{}".format(close))
+        logging.info("parse()")
+        logging.info("time:{}".format(time))
+        logging.info("symbol:{}".format(ticker))
+        logging.info("action:{}".format(action))
+        logging.info("price:{}".format(close))
   
-    if action == "buy":
-        trade_buy(x)
-    elif action =="sell":
-        q = have_position(x["ticker"])
-        if q == True:
-            trade_sell(x)
-        else:
-            logging.info("attempted to Sell something we do not have a positon on and we DO NOT have MARGINS enabled")
+        if action == "buy":
+            trade_buy(x)
+        elif action =="sell":
+            q = have_position(x["ticker"])
+            if q == True:
+                trade_sell(x)
+            else:
+                logging.info("attempted to Sell something we do not have a positon on and we DO NOT have MARGINS enabled")
   
 # -------------------------------
   

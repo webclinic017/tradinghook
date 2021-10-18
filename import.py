@@ -1,6 +1,6 @@
 import json
 import os.path
-from app import tradecode, ExchangeAccount, insert_into_ExchangeAccount
+from app import tradecode
 
 if os.path.isfile("exchangeaccounts.json"):
     f = open('exchangeaccounts.json',)
@@ -8,8 +8,8 @@ if os.path.isfile("exchangeaccounts.json"):
     data = json.load(f)
  
     for i in data['exchangeaccounts']:
-        ea = ExchangeAccount()
-        eat.InstanceID = i["InstanceID"]
+        ea = tradecode.ExchangeAccount()
+        ea.InstanceID = i["InstanceID"]
         ea.UserID = i["UserID"]
         ea.ExchangeID = i["ExchangeID"]
         ea.exchangenickname = i["exchangenickname"]

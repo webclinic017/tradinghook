@@ -2,7 +2,7 @@ import json
 import os.path
 from app import tradecode
 
-if exists("exchangeaccounts.json"):
+if os.path.isfile("exchangeaccounts.json"):
     f = open('exchangeaccounts.json',)
  
     data = json.load(f)

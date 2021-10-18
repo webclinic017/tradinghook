@@ -67,7 +67,7 @@ sudo systemctl status tradinghook
     ├── server.py                       Server code
     └── app
        ├── doc
-       |   ├── tboery-of-operation.md   Theory behind the intended use
+       |   ├── theory-of-operation.md   Theory behind the intended use
        |   └── structures.md            structures - reference      
        ├── static
        ├── templates

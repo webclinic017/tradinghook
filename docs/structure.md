@@ -51,9 +51,16 @@ Condition
 UserID
 Symbol
 Passphrase
-FundID
+InstanceID
 Tradetype
 condition
+
 ```
+```bash
+0: no condition
+1: order 30, buy InstanceID
+```
+
+0,AAPL,ABC1234,1,
 
 ## Initial Doc

@@ -383,7 +383,7 @@ def add_position(trade):
 # ------------------------------
 
 def record_transaction(transaction):
-    logging.info(("TRADINGHOOK.RECORD_TRANSACTION: [ENTER]")
+    logging.info("TRADINGHOOK.RECORD_TRANSACTION: [ENTER]")
     #print(trade)
     conn = create_connection(CONFIG.DATABASE)
     if conn is not None:
@@ -395,7 +395,7 @@ def record_transaction(transaction):
                                "\""+transaction['price']+"\","+
                                "\""+transaction['orderplaced']+"\","+
                                "\""+transaction['orderfilled']+"\");")
-        print(sqlite_insert_query)
+        logging.info(sql_statement)
         cursor = conn.cursor()
         count = cursor.execute(sql_statement)
         conn.commit()

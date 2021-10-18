@@ -130,7 +130,7 @@ def have_position(x):
     rows = []
     conn = create_connection(CONFIG.DATABASE)
     if conn is not None:
-        query = ("SELECT * FROM position WHERE ticker = '"+x+"';")                             
+        query = ("SELECT * FROM position WHERE symbol = '"+x+"';")                             
         cursor = conn.cursor()
         count = cursor.execute(query)
         rows = cursor.fetchall() 

@@ -408,17 +408,17 @@ def record_transaction(transaction):
 # ------------------------------
 
 def delete_position(x):
-    print("TRADERDB.DELETE_POSITION:")
+    logging.info("TRADERDB.DELETE_POSITION:")
     rows = ""
     conn = create_connection(CONFIG.DATABASE)
     if conn is not None:
-        query = ("DELETE FROM position WHERE ticker = '"+x+"';")                             
+        query = ("DELETE FROM position WHERE symbol = '"+x+"';")                             
         cursor = conn.cursor()
         count = cursor.execute(query)
         conn.commit()        
-        print ("OUT:",count)
+        logging.info("OUT: {}".format(count))
     else:
-        print("Error! cannot create the database connection.")
+        logging.info("Error! cannot create the database connection.")
     cursor.close()
 
 # ------------------------------

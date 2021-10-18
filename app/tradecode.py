@@ -367,7 +367,7 @@ def add_position(trade):
     if conn is not None:
         sql_statement = ("INSERT INTO position (time,ticker,qty,price,amount)\n" +
                                "VALUES(\""+trade['time']+"\"," +
-                               "\""+trade['symbol']+"\","+
+                               "\""+trade['ticker']+"\","+
                                "\""+"1"+"\","+
                                "\""+trade['close']+"\","+
                                "\""+"1"+"\")")

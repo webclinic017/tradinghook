@@ -1,6 +1,6 @@
 import json
 import os.path
-from app import tradecode
+from app import tradecode, ExchangeAccount, insert_into_ExchangeAccount
 
 if os.path.isfile("exchangeaccounts.json"):
     f = open('exchangeaccounts.json',)

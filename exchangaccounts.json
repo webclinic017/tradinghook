@@ -1,0 +1,21 @@
+{
+	"exchangeaccounts" : [
+	{
+		"InstanceID":  1,
+		"UserID":  1,
+		"ExchangeID": 0,
+		"exchangenickname": "webullpaper",
+		"exchangeusername": "nobody@gmail.com",
+		"echangepassword": "password",
+		"exchangetoken": "123123"
+    },
+	{
+		"InstanceID": 2,
+		"UserID": 1,
+		"ExchangeID": 1,
+		"exchangenickname": "webull",
+		"exchangeusername": "nobody@gmail.com",
+		"exchangepassword": "password",
+		"exchangetoken": "123123"
+    }
+}

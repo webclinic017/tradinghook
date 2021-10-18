@@ -658,14 +658,18 @@ def parse(x):
   action = x["order_action"]
   close = x["close"]
 
-  if action == "buy":
-    trade_buy(x)
-  elif action =="sell":
-    q = have_position(x["ticker"])
-    if q == True:
-      trade_sell(x)
-    else:
-      print("attempted to Sell something we do not have a positon on and we DO NOT have MARGINS enabled")
+  logging.info("parse()")
+  logging.info("time:{}".format(time))
+  logging.info("action:{}".format(action))
+  
+  #if action == "buy":
+  #  trade_buy(x)
+  #elif action =="sell":
+  #  q = have_position(x["ticker"])
+  #  if q == True:
+  #    trade_sell(x)
+  #  else:
+  #    print("attempted to Sell something we do not have a positon on and we DO NOT have MARGINS enabled")
   
 # -------------------------------
   

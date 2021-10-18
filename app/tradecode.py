@@ -691,6 +691,6 @@ def init_tradecode():
         logging.info("creating trades table.")
         create_trades_table()    
         
-    if not is_table_present("exchangeccounts"):
+    if not is_table_present("exchangeaccounts"):
         logging.info("creating exchangeaccounts table.")
         create_exchangeaccounts_table()     

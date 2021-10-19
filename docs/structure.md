@@ -64,7 +64,10 @@ stoploss     # if stoploss
 ## Initial Doc
 
 The conditions part of tha tradinghook is where the real work occurs.  This matches a hook an an "action".  Hooks are realtively dumb
-as they are merely thrown.  The resulting action is ...
+as they are merely thrown.
+
+To review the theory of operation.  One would use a program like Tradinghook or another program (say Python, C#) to throw a hook.
+Trading hook catches the hook and buy using conditional logic turns it into an order.
 
 Let's talk some about how a hook can be matched to a condition. We need the conditions portion to be flexiable enough to
 work out all the trading conditions we would want.

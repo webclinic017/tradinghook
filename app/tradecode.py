@@ -249,6 +249,26 @@ def create_trades_table():
         
 # ------------------------------
 
+def create_conditions_table():    
+    sql_statement = """ CREATE TABLE IF NOT EXISTS conditions (
+                           InstanceID text,
+                           UserID text,
+                           ExchangeID text,
+                           exchangenickname text,
+                           exchangeusername  text,   
+                           exchangepassword text,
+                           exchangetoken text
+                        ); """
+    # create a database connection
+    conn = create_connection(CONFIG.DATABASE)
+    # create tables
+    if conn is not None:
+        create_table(conn, sql_statement)
+    else: 
+        print("Error! cannot create the database connection.")
+
+# ------------------------------
+
 def create_exchangeaccounts_table():    
     sql_statement = """ CREATE TABLE IF NOT EXISTS exchangeaccounts (
                            InstanceID text,
@@ -438,25 +458,12 @@ def return_transactions():
 
 # -------------------------------
  
-def webull_exchange_buy(trade):
-  logging.info("WEBULL_EXCHANGE_BUY: [ENTER]")
-  config = configparser.ConfigParser()
-  config.read_file(open('defaults.cfg'))
-  username = config['DEFAULT']['username']
-  password = config['DEFAULT']['password']
-  token = config['DEFAULT']['token']
-  #print(username)
-  #print(password)
-  #print(token)
-  #print("POINT1:")
+def paperwebull_buy(trade):
+  logging.info("PAPERWEBULL_BUY: [ENTER]")
+  ea = query_ExchangeAccount(1)    
   wb = paper_webull()
-  #print("POINT2:")  
-  a = wb.login(username, password)
-  #print("x:", a)
-  #print("POINT3:")    
-  a = wb.get_trade_token(token)
-  #print("x:", a)
-  #print("POINT4:")  
+  a = wb.login(ea.exchangeusername,ea.exchangepassword)
+  a = wb.get_trade_token(ea.exchangetoken)
   ticker = trade["ticker"]
   print("ticker:",ticker)  
   amt = float(trade["close"])
@@ -466,7 +473,7 @@ def webull_exchange_buy(trade):
   #a = wb.place_order(ticker, price=amt, quant=20) 
   print("order status:", a)
   add_position(trade)
-  logging.info("WEBULL_EXCHANGE_BUY: [EXIT]")  
+  logging.info("PAPERWEBULL_BUY: [EXIT]")  
   
 # ------------------------------- 
 #   def place_order_otoco(self, stock='', price='', stop_loss_price='', limit_profit_price='', time_in_force='DAY', quant=0) :
@@ -483,33 +490,28 @@ def webull_live_buy(trade):
     qty = 20
     limit_profit = price + 0.30 
     stop_loss = price - (price * 0.07)
-    #default action = BUY
     #a = wb.place_order(ticker, price=amt, quant=20) 
-    a = place_order_otoco(symbol, price=price, stop_loss_price=stop_loss, limit_profit_price=limit_profit, time_in_force='DAY', quant=qty) 
+    a = wb.place_order_otoco(symbol, price=price, stop_loss_price=stop_loss, limit_profit_price=limit_profit, time_in_force='DAY', quant=qty) 
     logging.info("order status: {}".format(a))
     add_position(trade)
     logging.info("WEBULL_LIVE_BUY: [EXIT]")    
  
 # -------------------------------
 
-def webull_exchange_sell(x):
-    logging.info("WEBULL_LIVE_SELL: [ENTER]")
+def paperwebull_sell(x):
+    logging.info("PAPERWEBULL_SELL: [ENTER]")
     ea = query_ExchangeAccount(2)
     wb = paper_webull()
     a = wb.login(username, password)
-    #print("x:", a)
     a = wb.get_trade_token(token)
-    #print("x:", a)
     a1 = x["ticker"]
-    #print("type:", type(a1))
     print("ticker:",a1)  
     amt = float(x["close"])
-    #print("type:", type(amt)) 
     print("amt:", amt)
     a = wb.place_order(stock=a1, price=amt, quant=20, action="SELL")
     print("order status:", a)
     delete_position(x["ticker"]) 
-    logging.info("WEBULL_LIVE_SELL: [EXIT]")  
+    logging.info("PAPERWEBULL_SELL: [EXIT]")  
   
 # -------------------------------
 
@@ -519,31 +521,13 @@ def webull_live_sell(x):
     wb = webull()
     a = wb.login(ea.exchangeusername, ea.exchangepassword)
     a = wb.get_trade_token(ea.exchangetoken)
-    #print("x:", a)
     a1 = x["ticker"]
-    #print("type:", type(a1))
-    #print("ticker:",a1)  
     amt = float(x["close"])
-    #print("type:", type(amt)) 
-    #print("amt:", amt)
     a = wb.place_order(stock=a1, price=amt, quant=20, action="SELL")
     logging.info("order status: {}".format(a))
     delete_position(x["ticker"]) 
     logging.info("WEBULL_LIVE_SELL: [EXIT]")    
 
-# -------------------------------
-
-def papertrade_exchange_sell(x):
-  '''  username = "x"
-  password = "x"
-  token = "x"
-  tradetool = papertrade()
-  a = tradetool.login(username, password)
-  a = tradetool.setauthtoken(token)
-  a = tradetool.place_order(stock = "x", price=amt, quant=20, action="SELL")
-  '''
-  return
-  
 # -------------------------------
 
 def papertrade_exchange_buy(x):
@@ -561,14 +545,14 @@ def log(msg):
 
 def trade_buy(trade):
   logging.info("TRADE_BUY:")
-  # webull_exchange_buy(trade)
+  # paperwebull_buy(trade)
   webull_live_buy(trade)
 
 # -------------------------------
   
 def trade_sell(x):
   logging.info("TRADE_SELL: [ENTER]")
-  #webull_exchange_sell(x)
+  #paperwebull_sell(x)
   #webull_live_sell(x)
 
 # -------------------------------
@@ -620,3 +604,7 @@ def init_tradecode():
     if not is_table_present("exchangeaccounts"):
         logging.info("creating exchangeaccounts table.")
         create_exchangeaccounts_table()     
+
+    if not is_table_present("conditions"):
+        logging.info("creating conditions table.")
+        create_exchangeaccounts_table()    

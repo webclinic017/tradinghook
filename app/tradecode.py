@@ -439,7 +439,7 @@ def return_transactions():
 # -------------------------------
  
 def webull_exchange_buy(trade):
-  print("WEBULL_EXCHANGE_BUY: [ENTER]")
+  logging.info("WEBULL_EXCHANGE_BUY: [ENTER]")
   config = configparser.ConfigParser()
   config.read_file(open('defaults.cfg'))
   username = config['DEFAULT']['username']
@@ -466,19 +466,10 @@ def webull_exchange_buy(trade):
   #a = wb.place_order(ticker, price=amt, quant=20) 
   print("order status:", a)
   add_position(trade)
-  #
-  #transaction = Transaction()
-  #transaction.userid = 1
-  #transaction.symbol = trade["ticker"]
-  #transaction.side = "BUY"
-  #transaction.qty = 20
-  #transaction.price = float(trade["close"])
-  #transaction.orderplaced = trade["time"]
-  #transaction.orderfilled = "2021-08-13T13:40:00Z" 
-  #record_transaction(transaction)
-  print("WEBULL_EXCHANGE_BUY: [EXIT]")  
+  logging.info("WEBULL_EXCHANGE_BUY: [EXIT]")  
   
 # ------------------------------- 
+#   def place_order_otoco(self, stock='', price='', stop_loss_price='', limit_profit_price='', time_in_force='DAY', quant=0) :
   
 def webull_live_buy(trade):
     logging.info("WEBULL_LIVE_BUY: [ENTER]")
@@ -486,13 +477,15 @@ def webull_live_buy(trade):
     wb = webull()
     a = wb.login(ea.exchangeusername, ea.exchangepassword)
     a = wb.get_trade_token(ea.exchangetoken)
-    ticker = trade["ticker"]
-    logging.info("ticker: {} ".format(ticker))  
-    amt = float(trade["close"])
-    #print("type:", type(amt)) 
-    #print("amt:", amt)
+    symbol = trade["ticker"]
+    logging.info("ticker: {} ".format(symbol))  
+    price = float(trade["close"])
+    qty = 20
+    limit_profit = price + 0.30 
+    stop_loss = price - (price * 0.07)
     #default action = BUY
-    a = wb.place_order(ticker, price=amt, quant=20) 
+    #a = wb.place_order(ticker, price=amt, quant=20) 
+    a = place_order_otoco(symbol, price=price, stop_loss_price=stop_loss, limit_profit_price=limit_profit, time_in_force='DAY', quant=qty) 
     logging.info("order status: {}".format(a))
     add_position(trade)
     logging.info("WEBULL_LIVE_BUY: [EXIT]")    
@@ -576,7 +569,7 @@ def trade_buy(trade):
 def trade_sell(x):
   logging.info("TRADE_SELL: [ENTER]")
   #webull_exchange_sell(x)
-  webull_live_sell(x)
+  #webull_live_sell(x)
 
 # -------------------------------
 

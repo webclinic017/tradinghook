@@ -59,6 +59,8 @@ qty
 ordertype    # market,limit
 trakeprofit  # 
 stoploss     # if stoploss
+igg          # if global greater
+dg           # decrement a global var
 ```
 
 ## Initial Doc
@@ -67,7 +69,7 @@ The conditions part of tha tradinghook is where the real work occurs.  This matc
 as they are merely thrown.
 
 To review the theory of operation.  One would use a program like Tradinghook or another program (say Python, C#) to throw a hook.
-Trading hook catches the hook and buy using conditional logic turns it into an order.
+Trading hook catches the hook and by using conditional logic turns it into an order.
 
 Let's talk some about how a hook can be matched to a condition. We need the conditions portion to be flexiable enough to
 work out all the trading conditions we would want.
@@ -92,3 +94,24 @@ last resort to match a hook with a particular trade.
 This process does mean that tht "work" will need to be put in to match the exchange accounts with the trade size.
 
 This also gives us the ability to match match a hook and create a BUY LIMIT OCO type order.
+
+```bash
+{
+ "condition": [
+        {
+            "Status": 1,
+            "UserID": 1,
+            "Symbol": AAPL,
+            "Passphrase": abcd1234,
+            "InstanceID": 1,
+            "Tradetype": OTCO,
+            "qty": 20,
+            "ordertype": limit,
+            "trakeprofit:" +0.30,
+            "stoploss":   -0.07,
+            "igg": a,
+            "dg": a
+        }
+    ]
+}
+```

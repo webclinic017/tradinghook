@@ -104,7 +104,10 @@ igg as primitive conditional tool to manipulate something called a "global varia
   i.e.  If "IGG" If Global is Greater than 0 then this is a valid condition to evaluate.
         If  IGG global var decrements to 0 then also disable this rule.
 
-By using a global variable we give ourselves primitive programming to create something that equates to ... out of this pool I can only trade 3 times.
+By using a global variable we give ourselves primitive programming to create something a set of conditions that limits trades to an particular exchange to 3 times.
+
+This does imply that a bit of thought needs to be done in advance.  Note that this doesn't do anything cool like take into account the balance of a pool to
+and the price to calculate the QTY that can be safely purchased.
 
 ```bash
 {

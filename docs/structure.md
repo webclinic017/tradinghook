@@ -45,7 +45,7 @@ exchangetoken
  - Note "import.py" which can be used to import exchange credentials
 
 In this way a single user may operate with multiple ExchangeIDs.
-i.e. If you have more than one TD Ameritrade accounts
+i.e. If you have more than one TD Ameritrade accounts, or Webcull, TD Ameritrade together.
 
 Condition
 ```bash

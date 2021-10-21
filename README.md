@@ -17,6 +17,7 @@ Posted 10/17/2021 - Yes this is an active project.  There will be updates to thi
 ## Docs
 
 Please read the "theory-of-operation.rst" file.  Or at least this is what I am posting at the moment.  This will be more of a introduction of how this can be used.
+This also reveals some of the current internal workings of how the "structures" json file can be used to implement a set of primitive trading conditions.
 
 ## INSTALLATION
 

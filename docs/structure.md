@@ -74,6 +74,7 @@ Trading hook catches the hook and by using conditional logic turns it into an or
 Let's talk some about how a hook can be matched to a condition. We need the conditions portion to be flexiable enough to
 work out all the trading conditions we would want.
 
+```bash
 SYMBOL=APPL
 Passphrase=abc123
 InstanceID=2
@@ -81,11 +82,12 @@ UserID=1
 qty=20
 side=BUY
 igg=a
+```
 
 Hook abc123,AAPL,140.0,BUY
 
 This is a simple: example where the hook matches the condition.  We seimple place a market BUY for APPL using the Webull Live account.
-At the end of the trade the "condition's" status is marked disabled for the remaineder of the day.
+At the end of the trade the "condition's" status is marked disabled for the remaineder of the day. (assuming a was 1)
 
 We could have a condition also with SYMBOL=*
 
@@ -97,7 +99,7 @@ This process does mean that tht "work" will need to be put in to match the excha
 This also gives us the ability to match match a hook and create a BUY LIMIT OCO type order.
 
 In case by some insane reason someone else is reading this, or in case I am and I have to look this over again, currently I am using
-igg and dg as operators to manipulate something called a "global variable".  
+igg as primitive conditional tool to manipulate something called a "global variable".  
 
   i.e.  If "IGG" If Global is Greater than 0 then this is a valid condition to evaluate.
         If  IGG global var decrements to 0 then also disable this rule.

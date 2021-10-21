@@ -59,7 +59,7 @@ condition
 qty
 ordertype    # market,limit
 trakeprofit  # 
-stoploss     # if stoploss
+stoploss     # stoploss
 igg          # if global is greater than 0
 ```
  

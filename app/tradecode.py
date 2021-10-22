@@ -265,7 +265,8 @@ def create_conditions_table():
     if conn is not None:
         create_table(conn, sql_statement)
     else: 
-        print("Error! cannot create the database connection.")
+        logging.info("[CREATE_CONDITIONS]Error! cannot create the database connection..")
+
 
 # ------------------------------
 
@@ -484,6 +485,7 @@ def webull_live_buy(trade):
     wb = webull()
     a = wb.login(ea.exchangeusername, ea.exchangepassword)
     a = wb.get_trade_token(ea.exchangetoken)
+    logging.info("token_status: {}".format(a))
     symbol = trade["ticker"]
     logging.info("ticker: {} ".format(symbol))  
     price = float(trade["close"])
@@ -607,4 +609,4 @@ def init_tradecode():
 
     if not is_table_present("conditions"):
         logging.info("creating conditions table.")
-        create_exchangeaccounts_table()    
+        create_conditions_table()    

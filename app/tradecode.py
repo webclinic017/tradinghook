@@ -487,11 +487,13 @@ def webull_live_buy(trade):
     a = wb.get_trade_token(ea.exchangetoken)
     logging.info("token_status: {}".format(a))
     symbol = trade["ticker"]
-    logging.info("ticker: {} ".format(symbol))  
+    logging.info("symbol: {} ".format(symbol))  
     price = float(trade["close"])
     qty = 20
     limit_profit = price + 0.30 
     stop_loss = price - (price * 0.07)
+    stop_loss = round(stop_loss,2)
+    logging.info("stop_loss: {}".format(string(stop_loss)))    
     #a = wb.place_order(ticker, price=amt, quant=20) 
     a = wb.place_order_otoco(symbol, price=price, stop_loss_price=stop_loss, limit_profit_price=limit_profit, time_in_force='DAY', quant=qty) 
     logging.info("order status: {}".format(a))
